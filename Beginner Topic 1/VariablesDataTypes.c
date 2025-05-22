@@ -1,60 +1,70 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>   // Standard input/output functions (printf, fgets)
+#include <stdlib.h>  // Standard library (not strictly needed here)
+#include <string.h>  // For string manipulation (strcspn)
 
+/**
+ * @brief Clears the standard input buffer.
+ *
+ * Reads and discards characters from stdin until a newline or EOF.
+ * Prevents leftover characters from affecting subsequent input calls.
+ */
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+/**
+ * @brief Main function explaining C keywords and identifiers.
+ *
+ * This program defines what keywords and identifiers are in C,
+ * and lists the rules for creating valid identifiers.
+ */
 int main()
 {
-    char answer[500];
+    char user_answer[500]; // Buffer to store the user's answer
+
     printf("What is the difference between keyword and reserved words in C?\n");
-    scanf("%[^\n]", &answer); //note this format specifier - placeholder %s does not work here, it will only take the first word in your answer
+    printf("(Type your answer and press Enter):\n");
+    // Use fgets for safe input: reads up to sizeof(user_answer)-1 characters,
+    // preventing buffer overflows.
+    if (fgets(user_answer, sizeof(user_answer), stdin) == NULL) {
+        printf("Error reading input.\n");
+        return 1; // Indicate error
+    }
+    // Remove the trailing newline character that fgets might include.
+    //This is safe preventing buffer overflows.
+    user_answer[strcspn(user_answer, "\n")] = '\0';
 
-    printf("\n");
-    printf("\n");
+    printf("\nYour answer: %s\n", user_answer);
 
-    printf("Your answer: %s\n", answer);
+    printf("\n------------------------------------------------\n");
+    printf("Understanding C Keywords and Identifiers\n");
+    printf("------------------------------------------------\n");
 
-    printf("\n");
-    printf("\n");
+    // --- Keywords (often called Reserved Words) ---
+    printf("\n--- Keywords (Reserved Words) ---\n");
+    printf("Keywords are special words in C with predefined meanings.\n");
+    printf("They are used by the compiler for specific purposes and cannot be used\n");
+    printf("as names for variables, functions, or any other program elements.\n");
+    printf("Examples: int, float, if, while, return.\n");
 
-    printf("The best definition is: \n");
+    // --- Identifiers ---
+    printf("\n--- Identifiers ---\n");
+    printf("Identifiers are names given to program elements like variables, functions,\n");
+    printf("arrays, etc. You choose these names.\n");
 
-    printf("\n");
-    printf("\n");
+    printf("\n--- Rules for C Identifiers ---\n");
+    printf("1.  Must start with a letter (A-Z, a-z) or an underscore (_).\n");
+    printf("2.  After the first character, can contain letters, digits (0-9), and underscores.\n");
+    printf("3.  Cannot be a C keyword.\n");
+    printf("4.  Are case-sensitive (e.g., 'myVar' and 'myvar' are different).\n");
+    printf("5.  Cannot contain spaces or other special characters (like !, @, #, $).\n");
+    printf("6.  While length can be arbitrary, only the first few characters (e.g., 31) might be significant to some compilers.\n");
+    printf("7.  Choose meaningful names for readability and maintainability.\n");
 
-    printf("-------------------------\n");
-    sleep(1);
-    printf("Keyword: Keywords are reserved words in a programming language. They have predefined meanings and are used to perform specific tasks or operations. \n");
-    printf("-------------------------\n");
+    printf("\n------------------------------------------------\n");
+    printf("Remember these rules for clear and correct C code!\n");
+    printf("------------------------------------------------\n");
 
-    printf("\n");
-    printf("\n");
-
-    printf("-------------------------\n");
-    printf("An identifier is essentially a label that you give to a program entity. Rules for naming identifiers include: They must start with a letter (uppercase or lowercase) or an underscore. After the first character, they can include letters, digits, and underscores. Identifiers are case-sensitive; for example, count and Count, would be treated as different identifiers. They cannot be the same as keywords.\n");
-    printf("-------------------------\n");
-
-    printf("\n");
-    printf("\n");
-
-    printf("-------------------------\n");
-    printf("THESE ARE THE MAIN RULES FOR IDENTIFIERS IN C PROGRAMMING\n");
-    printf("~READ ADN RE-READ FOR YOU TO NEVER FORGET~\n");
-    printf("-------------------------\n");
-
-    printf("Identifiers should only contain alphabets, digits, and only symbol allowed is underscore\n");
-    sleep(1);
-    printf("The first character of an identifier should be either an alphabet letter or an underscore\n");
-    sleep(1);
-    printf("Identifiers should not be the same as C keywords\n");
-    sleep(1);
-    printf("C is case-sensitive, so check out on that when dealing with C identifiers\n");
-    sleep(1);
-    printf("Identifiers can be arbitrarily long, but some implementations of C might recognize only the first 8 characters to 31 characters.\n");
-    sleep(1);
-    printf("Give meaningful names for your identifiers for clean and maintainable code\n");
-    sleep(1);
-    printf("Blank space is not allowed!\n");
-
-    printf("-------------------------\n");
-
-    return 0;
+    return 0; // Indicates successful program execution
 }

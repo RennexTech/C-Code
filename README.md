@@ -8,6 +8,8 @@ This repository is my personal playground for all things C programming, I promis
 
 You should learn to C these days. So that your boss can give you arrays. And your memories can never leak. And...
 
+When you read the code, remove the comments first, try understanding it without comments then understand it with comments, after you try to code it yourself.
+
 ![image](https://github.com/user-attachments/assets/0adb27db-bf02-4bb4-9561-67aec88fe72f)
 
 **🌟 What Awaits You? Why C?🌟**

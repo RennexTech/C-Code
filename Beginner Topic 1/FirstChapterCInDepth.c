@@ -1,20 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> // Standard input/output library
+#include <stdlib.h> // Standard library (not strictly needed here)
 
+/**
+ * @brief Main function demonstrating basic C escape sequences.
+ *
+ * This program showcases common escape sequences for formatting output.
+ */
 int main()
 {
-    //newline
+    // Prints "Hello world!" followed by a newline.
     printf("Hello world!\n");
-    //including double quotes
-    printf("She said \"hello!\"\n");
-    //to include backslashes in a string
-    printf("The file location is C:\\Users\\Program Files\n");
-    //simulate the backspace using \b - erasing
-    printf("5\b4\b3\b2\b1\b\n");
-    //carriage return - move cursor to the beginning of the current line
-    printf("Line 1\rLine 2");
-    /* In this example, the first line "Line 1" is overwritten by "Line 2" because
-    \r moves the cursor to the beginning of the line, and then "Line 2" is printed. */
 
-    return 0;
+    // Prints a string including double quotes.
+    printf("She said \"hello!\"\n");
+
+    // Prints a string with literal backslashes.
+    printf("The file location is C:\\Users\\Program Files\n");
+
+    // Simulates a countdown using backspace (\b).
+    printf("5\b4\b3\b2\b1\b\n");
+
+    // Demonstrates carriage return (\r) overwriting text.
+    printf("Line 1\rLine 2\n"); // "Line 2" will overwrite "Line 1"
+
+    return 0; // Indicates successful program execution
 }

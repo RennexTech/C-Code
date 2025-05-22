@@ -1,28 +1,36 @@
-#include <stdio.h>
-#include <time.h>
+#include <stdio.h> // For input/output functions like printf
+#include <time.h>  // For time-related functions (time, localtime, time_t, struct tm)
 
-
-/*
-
-We use time(NULL) to get the current time in seconds since the epoch (January 1, 1970).
-
-We then use localtime(&currentTime) to convert the current time to a struct tm containing various components of the date and time.
-
-We extract the day, month, and year components from the struct tm and format them using printf to display the date in the "MM/DD/YYYY" format.
-
-*/
-
+/**
+ * @brief Main function to get and display the current local date.
+ *
+ * This program uses functions from the <time.h> library to retrieve the
+ * current system time and format it into a readable date string.
+ */
 int main()
 {
-    //Get the current time
-    time_t currentTime; //This is part of the time.h header
-    struct tm *localTime; //What does this struct contain? we'll find out
+    time_t currentTime;       // Stores the current calendar time (seconds since epoch)
+    struct tm *localTime;     // Pointer to a structure holding broken-down time components
+
+    // Get the current time in seconds since the Epoch (Jan 1, 1970).
     currentTime = time(NULL);
+
+    // Convert the calendar time to a local time structure.
+    // This populates 'localTime' with year, month, day, hour, minute, second, etc.
     localTime = localtime(&currentTime);
 
-    int day = localTime -> tm_mday;
-    int month = localTime -> tm_mon + 1; // Adding 1 because months are 0-based
-    int year = localTime -> tm_year + 1900; // Years since 1900
+    // Extract day, month, and year components from the 'struct tm'.
+    // tm_mday: Day of the month (1-31)
+    // tm_mon: Month (0-11, so add 1 for 1-12)
+    // tm_year: Years since 1900 (so add 1900 to get actual year)
+    int day = localTime->tm_mday;
+    int month = localTime->tm_mon + 1;
+    int year = localTime->tm_year + 1900;
+
+    // Print the formatted date as MM/DD/YYYY.
+    // %02d ensures two digits with leading zero if needed (e.g., 01 for January).
+    // %04d ensures four digits for the year.
     printf("Today's date is: %02d/%02d/%04d\n", month, day, year);
-    return 0;
+
+    return 0; // Indicates successful program execution
 }
