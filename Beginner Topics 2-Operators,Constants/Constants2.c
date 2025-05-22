@@ -1,24 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // Not strictly needed for this example
 
-/*
-
-#define name value
-where name is the name of the symbolic constant and
-value is the value of the constant.
-The name must be an identifier, and the
-value can be any constant expression.
-
-*/
-
-
+// Symbolic constants defined using #define.
+// The preprocessor replaces these names with their values before compilation.
 #define NAME "Nixon"
 #define PI 3.142
 #define MAX 100
 #define CH 'a'
 
-int main()
-{
+int main() {
+    /*
+     * This program demonstrates the use of symbolic constants defined
+     * with the #define preprocessor directive. These constants make
+     * code more readable and easier to maintain by giving meaningful
+     * names to fixed values.
+     */
     char my_name[20] = NAME;
     int d = MAX;
     double circumference = PI * d;

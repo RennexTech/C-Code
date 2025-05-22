@@ -1,44 +1,85 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <limits.h>
+#include <stdio.h>   // For input/output functions like printf, scanf
+#include <stdlib.h>  // For general utilities (e.g., exit)
+#include <math.h>    // For pow() and isinf()
+#include <limits.h>  // For LLONG_MIN, LLONG_MAX
 
+// --- Function Prototypes ---
+void clear_input_buffer();
+
+/**
+ * @brief Clears the standard input buffer.
+ *
+ * Reads and discards characters from stdin until a newline or EOF.
+ * Prevents leftover characters from affecting subsequent input calls.
+ */
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+/**
+ * @brief Main function to calculate power and check for infinity.
+ *
+ * This program demonstrates using 'long long int' for large numbers,
+ * calculates powers using 'pow()', and checks for infinite results
+ * using 'isinf()' from <math.h>.
+ */
 int main()
 {
-    //we're using long long so that it can be 16 bytes which can store a very huge number
-    long long int a;
-    long long int b;
-    double power;
-    int is_infinite;
+    long long int base;     // Base number for power calculation
+    long long int exponent; // Exponent for power calculation
+    double result_power;    // Stores the result of pow(), which is a double
 
-    //calculate the long long int size using <limits.h>
+    // Display the min/max values for long long int from <limits.h>
     printf("The minimum value for long long int is: %lld\n", LLONG_MIN);
-    sleep(2);
     printf("The maximum value for long long int is: %lld\n", LLONG_MAX);
-    sleep(2);
     printf("\n");
 
     printf("-----------------------------------\n");
-    printf("\n");
-    while(1)
-    {
-        printf("Enter the number to calculate the power: \n");
-        scanf("%lld", &a);
+    printf("Power Calculator (Enter 0 for base to exit)\n");
+    printf("-----------------------------------\n");
 
-        printf("Enter the power itself(the one superscript): \n");
-        scanf("%lld", &b);
+    // Loop indefinitely until user decides to exit
+    while (1) {
+        printf("Enter the base number: ");
+        // Read base. Check for valid input.
+        if (scanf("%lld", &base) != 1) {
+            printf("Invalid input! Please enter a number.\n");
+            clear_input_buffer();
+            continue; // Skip to next loop iteration
+        }
+        clear_input_buffer(); // Clear leftover newline
 
-        power = pow(a, b);
+        // Exit condition: if base is 0, quit the program.
+        if (base == 0) {
+            printf("Exiting power calculator. Goodbye!\n");
+            break; // Exit the loop
+        }
 
-        //using is infinite to check if the number we find after calculating power is infinitely large
-        is_infinite = isinf(power);
-        printf("The number is infinite and can't be printed on normal calculator.");
+        printf("Enter the exponent: ");
+        // Read exponent. Check for valid input.
+        if (scanf("%lld", &exponent) != 1) {
+            printf("Invalid input! Please enter a number.\n");
+            clear_input_buffer();
+            continue; // Skip to next loop iteration
+        }
+        clear_input_buffer(); // Clear leftover newline
 
-        printf("\n");
+        // Calculate power using pow() function.
+        // pow() takes doubles and returns a double.
+        result_power = pow((double)base, (double)exponent);
 
-        printf("The power is: %lllf\n", power);
-
+        // Check if the result is infinite using isinf().
+        // isinf() returns a non-zero value if the argument is positive or negative infinity.
+        if (isinf(result_power)) {
+            printf("Result is too large (infinite) to be precisely represented.\n");
+        } else {
+            // Print the result if it's not infinite.
+            // Use %lf for double.
+            printf("The power is: %lf\n", result_power);
+        }
+        printf("\n"); // Add a newline for better spacing between calculations
     }
 
-    return 0;
+    return 0; // Program exits here
 }

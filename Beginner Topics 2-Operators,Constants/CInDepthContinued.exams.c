@@ -73,7 +73,7 @@ int main() {
         printf("You got a %c in science", grade3);
     } else if (science >= 50 && science < 60) {
         printf("You got a %c in science.", grade4);
-    } else if (science < 50 && science >= 0) {
+    } else if (science < 50 && science >= 0) { // Fixed space in >=
         printf("You got a %c in science.", grade5);
     } else {
         printf("You entered an invalid grade for science! Please retry.\n");
