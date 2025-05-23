@@ -1,4 +1,6 @@
 // 1 - This is the first file, the file number will tell you where you are in your studies.
+// RULE 1: Go slowly, read slowly, you don't even need a text to speech app, code it yourself in codeblocks or vscode or vs community.
+
 
 /*
 *
@@ -38,32 +40,26 @@ int main()
     // Printer, write these exact words on the screen for me and move to the next line! \n is an escape character as we said.
     printf("Basic = 1500\n");
 
-    /*
-     * Think of your screen as a giant whiteboard and the cursor as
-     * the marker. Normally, after you write something, the marker
-     * just moves to the next available spot. But sometimes, you want
-     * to control the marker's movement in a special way.
+
+
+    /* 
+     * Look at your screen. It's a giant whiteboard. The cursor is the marker. You see it? Yes. 
+     * 
+     * Normally, after you write something, the marker just moves to the next spot and waits for a new letter or event like tab keypress.
+     * 
+     * Sometimes, we want to control the marker's movement. C allows that using the escape sequences to make the cursor do unusual things. 
      *
-     * **Escape sequences** are like special secret commands you whisper
-     * to the marker (cursor) to make it do unusual things.
+     * `\t` tells the marker, "Jump forward to the next predefined tab stop," just like pressing the Tab key on a keyboard, it 
+     * usually moves 4 or 8 or any number of spaces, according to your settings.
      *
-     * `\t` is like telling the marker, "Jump forward to the next predefined
-     * tab stop," just like pressing the Tab key on a keyboard.
+     * `\b` is telling the marker, "Oops, go back one step!" which is essentially the backspace. 
      *
-     * `\b` is like telling the marker, "Oops, go back one step!"
+     * `\r (carriage return)` is telling the marker, "Go all the way back to the very beginning of the current line, ready to write over anything that's already there."
      *
-     * `\r` is like telling the marker, "Go all the way back to the
-     * very beginning of the current line, ready to write over anything
-     * that's already there."
+     * `\a` is telling the marker, "Make a little 'ding!' sound to get someone's attention."
      *
-     * `\a` is like telling the marker, "Make a little 'ding!' sound
-     * to get someone's attention."
-     *
-     * `\v` (vertical tab) and `\f` (form feed/new page) are like
-     * advanced commands you'd give to a printer, telling it to skip
-     * to the next vertical alignment point or even start a whole new page.
-     * On a regular screen, these don't usually do much, but they're there
-     * for when you're sending instructions to a physical printer.
+     * `\v` (vertical tab) and `\f` (form feed/new page) are advanced commands for a PHYSICAL printer. 
+     * 
      */
     printf("\\t moves the cursor to the next tab stop. Similarly we can use other escape sequences also. For example\n");
     printf("\\b moves the cursor one position back, '\\r' moves the cursor to the beginning of the current line\n");
@@ -71,24 +67,28 @@ int main()
     printf("column of the next line), and '\\f' moves the cursor to the 'next page. '\\v' and '\\f' are effective only\n");
     printf("when output is printed through a printer.\n");
 
+
+
+
     /*
-     * Imagine you're writing a secret code, and some characters in
-     * your message are also part of the secret code's rules.
-     * For example, if your code uses a backslash `\` to mean "do something special,"
-     * but you also want to actually *print* a backslash in your message,
-     * you have to tell the computer, "No, this backslash isn't special;
-     * it's just a regular character I want to see!"
+     * To the next: 
+     * 
+     * JOHN: Okay, printf is a sentence the computer will write on the console, but since am writing double quotes or single quotes for strings,
+     * how are we supposed to print a literal double quote on my screen?? Mr. C you have to explain this. 
+     * 
+     * MR.C - You add a backslash infront of it. [am out going to sleep, now go try that out for yourself...]
      *
-     * You do this by putting *another* backslash in front of it.
-     * So, if you want to print `\`, you type `\\`.
-     * The same goes for double quotes `"` and single quotes `'` if they are
-     * inside the string you are trying to print with `printf`.
-     * It's like saying, "Hey, this quote mark isn't the end of my sentence;
-     * it's part of the sentence itself!"
+     * JOHN: So, this only applies to backslashes, double quotes and single quotes. 
+     * 
+     * MR.C -
      */
+    
     printf("If we want to print characters like single quotes ( ' ), double quotes ( \" ) or the backslash character\n");
     printf("( \\ ), then we have to precede them by a backslash character in the format string.\n");
-
+    printf("This is an ordinary backslash that I want to see \\ I will see only one backslash.\n");
+    printf("This double quote \" will be visible");
+    
+    
     /*
      * This is a specific example of the "double backslash" rule.
      * You're telling the robot to print "9 \\ I I \\ 1978".
