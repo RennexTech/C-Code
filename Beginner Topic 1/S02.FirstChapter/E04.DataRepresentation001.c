@@ -1,37 +1,4 @@
-#include <stdio.h>   // Standard input/output library for printf, scanf, etc.
-#include <stdlib.h>  // Standard library for general utilities
-#include <limits.h>  // Defines limits of integer types (e.g., INT_MAX, SHRT_MIN)
-#include <float.h>   // Defines limits of floating-point types (e.g., FLT_MAX, DBL_MIN)
-// Note: <unistd.h> for sleep() is typically Unix-specific.
-// For cross-platform examples, it's often omitted or replaced with platform-specific calls (e.g., <windows.h> for Sleep()).
-// Removed sleep() calls for broader compatibility in this example.
-
-/**
- * @brief Displays a comprehensive table of C format specifiers and their descriptions.
- *
- * This function also prints the size and range for various integer and floating-point types
- * using their respective format specifiers and limits defined in <limits.h> and <float.h>.
- */
-
-void format_specifiers() {
-    // Table of common format specifiers
-    printf("+-------+----------------------------------------+\n");
-    printf("| Format| Description                            |\n");
-    printf("+-------+----------------------------------------+\n");
-    printf("|   %%d  | A decimal integer                      |\n");
-    printf("|   %%f  | A floating-point number                |\n");
-    printf("|   %%e  | A floating-point number (scientific)   |\n");
-    printf("|   %%g  | A floating-point number (shortest)     |\n");
-    printf("|   %%lf | A double (long range floating point)   |\n");
-    printf("|   %%h  | A short integer                        |\n");
-    printf("|   %%o  | An octal integer                       |\n");
-    printf("|   %%x  | A hexadecimal integer                  |\n");
-    printf("|   %%i  | A decimal, octal, or hexadecimal int   |\n");
-    printf("|   %%s  | A string                               |\n");
-    printf("|   %%u  | An unsigned decimal integer            |\n");
-    printf("+-------+----------------------------------------+\n");
-
-    printf("\n");
+ printf("\n");
 
     // Table of format specifiers with length modifiers
     printf("+---------+-------------------------------------------------------------+\n");
