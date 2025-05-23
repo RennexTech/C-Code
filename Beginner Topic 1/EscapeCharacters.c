@@ -30,45 +30,12 @@
  *      - When you see `\a` (escape sequence), you're telling the computer: “Yo, play a beep sound.”
  *      - When you see `%s` (format specifier), you're telling the compiler: “Replace this with a string, like ‘Nick’.”
  * 
- * **********************************************************************
- * **********************************************************************
- * 
- * So, the escape sequences are these are like stage directions whispered to the speaker. 
- * 
- * They are invisible commands that tell the console how to behave.
- * 
- * On computers, the code we write can whisper, hey, 
- * 
- *  \t (pronounced backslash t or tab), and the PC hears, that's like the tab key on my PC, lets add 4 spaces there. 
- * 
- *  \a = The computer says, "Cool, the program.exe told me to Trigger a little beep to get the user's attention.
- * 
- *  So, instead of writing a whole printf(beep) we just tell it \a which does the same.
- * 
- * It's a simpler way for us programmers to talk to the computer through our C code.
- * 
- * **********************************************************************
- * **********************************************************************
- * 
- * Format specifiers are "fill in the blank" cards that the compiler sees and goes "Yeah, I see the %s means string, I should fill in the blank, it with something like username which is a string datatype."
- * 
- * Essentially, the communicator will deliver his/her message using special tricks. 
- * 
- * That translates that you will be typing some weird funny characters and once you run your program, something crazy huge happens, you won't believe eg \t literally spaces your text or code. It acts like your tab key. 
- * This program prints various examples of how to use special characters
- * and format output in C using printf.
  */
 
 
 int main()
 {
-    /*
-     * Imagine you're giving instructions to a talking robot named C.
-     * When you use `printf`, you're essentially telling that robot,
-     * "Robot C, speak these exact words out loud on the screen for me!"
-     * So, `printf("Basic = 1500\n");` is like telling the robot,
-     * "Say 'Basic = 1500' and then move your voice to the next line."
-     */
+    // Printer, write these exact words on the screen for me and move to the next line! \n is an escape character as we said.
     printf("Basic = 1500\n");
 
     /*
