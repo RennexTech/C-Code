@@ -1,6 +1,7 @@
 /**
- * --- FILE 1 😎😎LET'S GO!!
- * 
+ * --------- FILE 001 😎😎LET'S GO!! ---------
+ * RULE 1: Go slowly, read slowly, you don't even need a text to speech app, code it yourself in codeblocks or vscode or vs community.
+
  * ## Your Code's "Blueprint & Tool Store" 🏗️
  *
  * As an architect, you're about to design and build a whole new house.
