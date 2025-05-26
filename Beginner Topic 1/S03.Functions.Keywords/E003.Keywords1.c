@@ -399,6 +399,7 @@ int main()
 //=====================================================================================
 
     printf("--------------------------------------------\n");
+    // We don't waste time, just like auto, this dude is already out of business, decommissioned too. 
     printf("19. register\n");
     sleep(1);
     printf("--------------------------------------------\n");
@@ -448,7 +449,7 @@ int main()
      * Mama Operating System takes the report card and checks: 
      *
      * return 0; My son succeeded this term😎 || Everything ran smoothly, all good here. ✅" (Success!)
-     * return 1(or any non-zero number); Ooh my goodness, my son bite dust in the finals🤣 : This tells the OS, "Uh oh, something went wrong during execution! ⚠️" (Failure/Error!)
+     * return 1(or any non-zero number); Ooh my goodness, my son bite dust in the finals🤣segfault detected❌💋  : This tells the OS, "Uh oh, something went wrong during execution! ⚠️" (Failure/Error!)
      *
      * Once main returns, the OS takes over, tidies up the program's memory, and gracefully ends the process, deletes the process control blocks and all its children.
      *
