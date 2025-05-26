@@ -159,8 +159,8 @@ void secret_code(int code)
 
 
 
-// Main is lonely and crying because it's pushed to the bottom by all these functions.
-// It works, but it doesn't like being sat on by so many functions — 🪑🪑🪑🪑
+// main() is pushed waaay to the bottom — poor guy, feeling ignored.
+// It works, but he doesn't like being sat on by so many functions — 🪑🪑🪑🪑
 // not very flexible or clean. At least with the last method (Style 1), you can write prototypes,
 // and keep your main on top, or even go write your functions in another .c file for better organization and flexibility.
 
