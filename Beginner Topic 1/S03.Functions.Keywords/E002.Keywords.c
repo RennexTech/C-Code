@@ -27,6 +27,28 @@ int main()
     printf("--------------------------------------------\n");
     sleep(5);
 
+    // If you dare use nested functions like me, 🤤 It's like feeding your compiler alcohol, it just laughs and says "who gave this bastard an IDE!😂"
+    // Am adding functions inside the main function for explanation.
+    // Over here, both x and y are stored in the stack, and both vanish after main() ends.
+    // Auto keyword here does nothing different because local variables are auto by default.
+    void simple_auto_keyword()
+    {
+        printf("Am auto, let me tell you what I usually do in C Programming.\n");
+        auto int x = 10; // auto is optional, local variables are auto by default.
+        int y = 20; // same thing, just without auto
+        printf("x: %d\n", x);
+        printf("y: %d\n", y);
+
+    }
+
+    // Writing auto in C in 2025 is like emailing sending an email and saying: 
+
+    auto int first_number = 20;
+
+    // "Hey, I just wanted to let you know am emailing you...", huh? 
+    // The compiler already knows, unless you're in a 1980s PC.
+    // In short auto is saying "this is temporary" but the compiler already knows your variables are all temporary, till main exits.
+
     printf("\n");
     printf("\n");
 
@@ -406,22 +428,3 @@ int main()
     return 0;
 }
 
-// Over here, both x and y are stored in the stack, and both vanish after main() ends.
-// Auto keyword here does nothing different because local variables are auto by default.
-void simple_auto_keyword()
-{
-    printf("Am auto, let me tell you what I usually do in C Programming.\n");
-    auto int x = 10; // auto is optional, local variables are auto by default.
-    int y = 20; // same thing, just without auto
-    printf("x: %d\n", x);
-    printf("y: %d\n", y);
-
-}
-
-// Writing auto in C in 2025 is like emailing sending an email and saying: 
-
-auto int first_number = 20;
-
-// "Hey, I just wanted to let you know am emailing you...", huh? 
-// The compiler already knows, unless you're in a 1980s PC.
-// In short auto is saying "this is temporary" but the compiler already knows your variables are all temporary, till main exits.
