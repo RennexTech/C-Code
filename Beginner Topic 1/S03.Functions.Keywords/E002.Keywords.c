@@ -102,7 +102,9 @@ int main()
     printf("8. do\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("The do keyword is the starting point of a do-while loop. It's used to repeatedly execute a block of code while a condition is true, with the condition checked after each iteration.\n");
+    printf("The 'do' keyword kicks off a do-while loop — it’s like saying, 'I’m gonna run this code at least once, then keep going as long as the vibe (condition) is right.' Unlike other loops that check first, this one checks *after* the action, so it never misses the first round. Perfect for when you gotta do the thing before deciding if you should repeat it.\n");
+    // In short, run the loop first, then check for the condition. If not met, run it again, check for the condition. 
+    // The old looping checks the condition -> then decides if the loop is to be run. You see the difference? 
     printf("--------------------------------------------\n");
     sleep(5);
 
