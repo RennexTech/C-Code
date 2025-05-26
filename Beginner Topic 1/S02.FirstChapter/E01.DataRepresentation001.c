@@ -50,7 +50,7 @@ int main() {
     printf("You gotta double it up! It's like an escape sequence for the percent itself.\n");
     printf("You type '%%%%' to print just '%%'.\n\n");
     printf("Example:\n");
-    printf("Actual Score: 95%%\n"); // Using '%%' to print a literal percent sign.
+    printf("Actual Score: 95%%\n"); // Using '%%' to print a literal percent sign. The second % is the one getting printed.
     printf("See? It printed '%%' and didn't throw a tantrum!\n");
     printf("Your battery is at 50%% and you're still on TikTok? Wild.\n"); // Another example with '%%'.
 
@@ -65,7 +65,7 @@ int main() {
 
     // Because C thinks you're trying to use a fake escape sequence — and it'll panic and throw a tantrum.😤😤
     // We don't need that coz ...
-    // We're just printing %d not substituting a value dynamically into it.
+    // We're just printing %d itself, not substituting a value dynamically into it.
     // Neither do we want it to perform an action on the screen the way \t , \r and the squad usually perform.  
 
 

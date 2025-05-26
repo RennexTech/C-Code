@@ -1,0 +1,10 @@
+*.vsidx
+.vs/C/v17/.wsuo
+/.vs
+.vs/C/v17/DocumentLayout.json
+.vs/C/v17/ipch/AutoPCH/6b5897a5b136e4df/ESCAPECHARACTERS.ipch
+.vs/C/v17/workspaceFileList.bin
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vscode/settings.json
