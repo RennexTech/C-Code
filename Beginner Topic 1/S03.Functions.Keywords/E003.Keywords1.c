@@ -1,16 +1,17 @@
-// We're just printing the keyword and its description in this program, nothing big, but some sleep in between.
-
+/**
+ * Hope you finished E002.Functions.c
+ * 
+ * We're just printing the keyword and its description in this program, nothing big 
+ * 
+ * and we introduce time.h for sleeping, the compiler needs to chill between prints😫 
+ * 
+ * He's going to be doing a lot of printing work.
+ * 
+ */ 
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-// I will only explain the hardest keywords with a simple example, the rest, 
-// I know you're smart enough to atleast understand.
-// Let's start with auto
-// and don't miss the return type when you create a prototype eg writing auto_keyword(); alone. 
-// the compiler will scream at you😤😤
-void auto_keyword();
-// Would be useable if the function was outside the main, but mine is inside the main, so...
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
     printf("--------------------------------------------\n");
     sleep(5);
 
+    // (Heads-up: C doesn't support nested functions by default — this is just for laughs and learning.)
     // If you dare use nested functions like me, 🤤 It's like feeding your compiler alcohol, it just laughs and says "who gave this bastard an IDE!😂"
     // Am adding functions inside the main function for explanation.
     // Over here, both x and y are stored in the stack, and both vanish after main() ends.
