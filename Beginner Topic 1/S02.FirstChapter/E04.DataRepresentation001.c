@@ -1,135 +1,59 @@
- printf("\n");
-
-    // Table of format specifiers with length modifiers
-    printf("+---------+-------------------------------------------------------------+\n");
-    printf("| Format  | Description                                                 |\n");
-    printf("+---------+-------------------------------------------------------------+\n");
-    printf("|   %%hd   | Short integer (signed)                                      |\n");
-    printf("|   %%hu   | Short integer (unsigned)                                    |\n");
-    printf("|   %%ld   | Long integer (signed)                                       |\n");
-    printf("|   %%lu   | Long integer (unsigned)                                     |\n");
-    printf("|   %%lld  | Long long integer (signed)                                  |\n");
-    printf("|   %%llu  | Long long integer (unsigned)                                |\n");
-    printf("|   %%Lf   | Long double                                                 |\n");
-    printf("|   %%Le   | Long double (scientific notation)                           |\n");
-    printf("|   %%Lg   | Long double (shortest representation)                       |\n");
-    printf("+---------+-------------------------------------------------------------+\n");
-
-    printf("\n");
-    printf("Format Specifiers with Modifiers: Sizes and Ranges\n\n");
-
-    // Demonstrates size and range for short int
-    printf("%%hd: Short integer (signed)\n");
-    printf("Size: %zu bytes\n", sizeof(short)); // %zu for size_t
-    printf("Range: %d to %d\n", SHRT_MIN, SHRT_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for unsigned short int
-    printf("%%hu: Short integer (unsigned)\n");
-    printf("Size: %zu bytes\n", sizeof(unsigned short));
-    printf("Range: 0 to %u\n", USHRT_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for long int
-    printf("%%ld: Long integer (signed)\n");
-    printf("Size: %zu bytes\n", sizeof(long));
-    printf("Range: %ld to %ld\n", LONG_MIN, LONG_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for unsigned long int
-    printf("%%lu: Long integer (unsigned)\n");
-    printf("Size: %zu bytes\n", sizeof(unsigned long));
-    printf("Range: 0 to %lu\n", ULONG_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for long long int
-    printf("%%lld: Long long integer (signed)\n");
-    printf("Size: %zu bytes\n", sizeof(long long));
-    printf("Range: %lld to %lld\n", LLONG_MIN, LLONG_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for unsigned long long int
-    printf("%%llu: Long long integer (unsigned)\n");
-    printf("Size: %zu bytes\n", sizeof(unsigned long long));
-    printf("Range: 0 to %llu\n", ULLONG_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for float (printed as double by printf)
-    printf("%%f, %%e, %%g: Floating-point number (float type, promoted to double for printf)\n");
-    printf("Size of float: %zu bytes\n", sizeof(float));
-    printf("Range of float: %e to %e\n", FLT_MIN, FLT_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for double
-    printf("%%lf, %%e, %%g: Floating-point number (double type)\n");
-    printf("Size of double: %zu bytes\n", sizeof(double));
-    printf("Range of double: %e to %e\n", DBL_MIN, DBL_MAX);
-    printf("\n");
-
-    // Demonstrates size and range for long double
-    printf("%%Lf, %%Le, %%Lg: Long double\n");
-    printf("Size of long double: %zu bytes\n", sizeof(long double));
-    printf("Range of long double: %Le to %Le\n", LDBL_MIN, LDBL_MAX);
-    printf("\n");
-}
-
 /**
- * @brief Main function demonstrating basic C I/O functions and function calls.
- *
- * This program shows how to use printf, scanf, getchar, putchar, and puts.
- * It also illustrates the importance of declaring functions before they are called.
+ * We can totally avoid scanf and use getchar to get multiple characters from the user using 
+ * getchar().
+ * 
  */
 
+#include <stdio.h>
+#include <stdlib.h> 
+
+
+#define MAX_WORD_LENGTH 20 // Setting a limit, like a character count for a tweet.
+
 int main() {
-    // Table summarizing common I/O functions
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| Function         | Usage                                              |\n");
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| scanf            | Reads formatted input from user/file.              |\n");
-    printf("|                  | Example: scanf(\"%%d\", &num);                      |\n");
-    printf("|                  | Reads an integer into 'num'.                       |\n");
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| printf           | Formats and prints output to console.              |\n");
-    printf("|                  | Example: printf(\"The answer is: %%d\\n\", num);     |\n");
-    printf("|                  | Displays 'num' with a message.                     |\n");
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| getchar          | Reads a single character from input stream.        |\n");
-    printf("|                  | Example: ch = getchar();                           |\n");
-    printf("|                  | Reads a character into 'ch'.                       |\n");
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| putchar          | Writes a single character to output stream.        |\n");
-    printf("|                  | Example: putchar('H');                             |\n");
-    printf("|                  | Displays the character 'H'.                        |\n");
-    printf("+------------------+----------------------------------------------------+\n");
-    printf("| puts             | Writes a string to output, adds newline.           |\n");
-    printf("|                  | Example: puts(\"Hello\");                            |\n");
-    printf("|                  | Displays \"Hello\" then a newline.                   |\n");
-    printf("+------------------+----------------------------------------------------+\n");
+    // This program shows how to grab multiple characters from the user,
+    // one by one, using getchar(). It's like building a message character
+    // by character, instead of just grabbing a whole block.
 
-    printf("\n");
+    char word[MAX_WORD_LENGTH + 1]; // +1 for the null terminator '\0', which marks the end of a C string.
+                                    // Think of '\0' as the "end of message" signal.
+    int i = 0;                      // Our counter, starting at zero like a fresh score.
+    char ch;                        // A temporary box to hold each character we read.
 
-    // Demonstrating putchar and puts
-    putchar('a'); // Prints a single character 'a'
-    puts("This is a random statement. I am using puts() to display it."); // Prints a string followed by a newline
-    printf("This is a random statement. I am using printf() to display it.\n"); // Prints a string (newline added for clarity)
+    printf("Enter a short word (max %d characters): ", MAX_WORD_LENGTH);
 
-    printf("\n");
+    // This loop is like a diligent listener, grabbing characters until
+    // you hit Enter or we run out of space in our 'word' box.
+    while ((ch = getchar()) != '\n' && ch != EOF && i < MAX_WORD_LENGTH) {
+        // 'ch = getchar()' reads one character and assigns it to 'ch'.
+        // '!=' '\n'' checks if it's not the Enter key.
+        // 'ch != EOF' checks if we haven't reached the end of input (like closing the terminal).
+        // 'i < MAX_WORD_LENGTH' makes sure we don't overflow our 'word' array.
 
-    // Example of reading a single character using getchar
-    char ch;
-    printf("Enter a single character: "); // Prompt for user input
-    ch = getchar(); // Reads a single character from stdin
-    printf("The character you entered is: %c\n", ch); // Prints the entered character
+        word[i] = ch; // Store the character in our 'word' array.
+        i++;          // Move to the next spot in the array.
+    }
 
-    printf("\n");
+    // After the loop, we need to make sure our 'word' is a proper C string.
+    // C strings *must* end with a null terminator ('\0').
+    // It's like putting a period at the end of your sentence so everyone knows it's complete.
+    word[i] = '\0'; // Add the null terminator at the current position 'i'.
 
-    // Calling the format_specifiers function to display type information
-    format_specifiers();
+    printf("You entered: %s\n", word); // Now we can print the whole word using %s.
 
-    // Note: The 'date()' function was removed as it was not defined.
-    // In C, functions must be declared or defined before they are called.
-    // Placing 'format_specifiers()' before 'main()' serves as its definition,
-    // making it callable from 'main()'.
+    // If the user typed more characters than MAX_WORD_LENGTH,
+    // there might still be leftover characters (including the newline)
+    // in the input buffer. We need to clear them out for future inputs.
+    // This is like clearing out the chat history so it doesn't mess up the next conversation.
+    while (ch != '\n' && ch != EOF) {
+        ch = getchar(); // Keep reading and discarding until newline or end-of-file.
+    }
 
-    return 0; // Indicates successful program execution
+    printf("\n"); // Just a little space.
+
+    printf("Enter another single character: ");
+    char single_char = getchar(); // Now this getchar() will wait for new input, not the leftover newline.
+    printf("You entered: %c\n", single_char);
+
+    return 0; // Program peace out!
 }
