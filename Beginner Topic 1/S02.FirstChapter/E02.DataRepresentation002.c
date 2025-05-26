@@ -1,6 +1,6 @@
 //--------- FILE 005 ---------
-
-#include <stdio.h>   // printf, scanf, etc. — your console's love language
+ #include <stdio.h> // This is like importing your favorite video editor app; it gives you all the cool functions to script and edit videos, you don't need to know its architecture, just use it.
+                    // printf, scanf, etc. — your console's love language
 #include <stdlib.h>  // life support for general tasks (like memory management)
 #include <limits.h>  // integer max/min values — helps you avoid overflows like a boss(e.g., INT_MAX, SHRT_MIN)
 #include <float.h>   // float/double range — so you don't crash when dividing by 0.00000001(e.g., FLT_MAX, DBL_MIN)
@@ -160,8 +160,9 @@ int main() {
 
     printf("\n");
 
-   #include <stdio.h> // This is like importing your favorite social media apps; it gives you all the cool functions to interact with the world.
+}
 
+  
 // No more 'date()' function hanging around like a ghosted text.
 // We're defining 'format_specifiers' right here so 'main' knows what's up,
 // kinda like tagging your friend in a story before they see it themselves.
