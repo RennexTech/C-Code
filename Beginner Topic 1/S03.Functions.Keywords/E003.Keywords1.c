@@ -662,7 +662,7 @@ int main()
     printf("25. struct\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'struct' is like creating your own **customized 'profile card' or 'data packet'**.\n");
+    printf("'struct' is like creating your own customized 'profile card' or 'data packet'.\n");
     printf("You know how a person has a name (text), an age (number), and a height (decimal)? Instead of keeping these as separate, loose pieces of info, 'struct' lets you bundle them all up under one single, neat label, like 'Person'.\n");
     printf("It's super useful for organizing related bits of data into one logical unit, making your code way cleaner and easier to manage complex information.\n");
     printf("Example: struct Car { char brand[50]; int year; float price; }; // A blueprint for a car's details.\n");
@@ -690,7 +690,7 @@ int main()
     printf("27. typedef\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'typedef' is like creating your own **custom, easy-to-remember nicknames** for complex data types.\n");
+    printf("'typedef' is like creating your own custom, easy-to-remember nicknames for complex data types.\n");
     printf("Imagine you have a super long, complicated title like 'Unsigned Long Long Integer'. Instead of writing that out every single time, 'typedef' lets you say: 'From now on, let's just call that BigNumber.'\n");
     printf("It makes your code way more readable and easier to manage, especially when dealing with fancy data structures or pointers. It's all about making your code look cleaner and more professional.\n");
     printf("Example: typedef unsigned long long BigNumber; // Now you can just use BigNumber instead of the long version.\n");
