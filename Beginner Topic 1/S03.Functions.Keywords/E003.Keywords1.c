@@ -1,6 +1,10 @@
 /**
  * Hope you finished E002.Functions.c
  * 
+ * This is going to be the longest file you might see in the entire code,
+ * 
+ * the rest of the files are generally just a few lines.
+ * 
  * We're just printing the keyword and its description in this program, nothing big 
  * 
  * and we introduce time.h for sleeping, the compiler needs to chill between prints😫 
