@@ -486,6 +486,21 @@ int main()
 
 //=====================================================================================
 
+    printf("29. unsigned\n");
+    sleep(1);
+    printf("--------------------------------------------\n");
+    printf("'unsigned' is like telling your number, 'Hey, you're a **positive-vibes-only** kind of number!'\n");
+    printf("It means this variable can *only* hold zero or positive whole numbers. The cool part? Since it doesn't need to save space for negative signs, it can store positive numbers that are twice as big as a regular 'signed' integer!\n");
+    printf("Think of it as a number line that starts at zero and only goes to the right. Perfect for counting things that can't be negative, like the number of likes on your post.\n");
+    printf("Example: unsigned int likes = 100000; // Can't have negative likes, right?\n");
+    printf("--------------------------------------------\n");
+    sleep(5);
+
+    printf("\n\n");
+
+
+//=====================================================================================
+
     // Make sure you go back and watch S02.E02 for more info
     printf("23. sizeof\n");
     sleep(1);
@@ -671,12 +686,59 @@ int main()
 
     printf("\n\n");
 
+    /**
+     *  struct Car 
+     *  {
+     *      char brand[50];
+     *      int year; 
+     *      float price;
+     *  }; 
+     * 
+     *  Let's see a real beginner's example
+     */
+
+     // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <string.h>
+
+        // Defining the struct
+        struct Car 
+        {
+            char brand[50];
+            int year; 
+            float price;
+        };
+
+        int main()
+        {
+            // Creating a struct Car instance
+            struct Car myCar;
+
+            // Filling the struct
+            strcpy(myCar.brand, "Toyota");
+            myCar.year = 2010;
+            myCar.price = 8999.99;
+
+            // Printing the car details
+            printf("🚗 Car Info:\n");
+            printf("Brand: %s\n", myCar.brand);
+            printf("Year: %d\n", myCar.year);
+            printf("Price: $%.2f\n", myCar.price);
+
+            return 0;
+        }
+
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
 //=====================================================================================
 
     printf("26. switch\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'switch' is like a **smart traffic controller at a complex intersection**.\n");
+    printf("'switch' is like a smart traffic controller at a complex intersection.\n");
     printf("Instead of a bunch of 'if-else if-else if' statements checking every single lane, 'switch' looks at one incoming car (your variable's value) and immediately directs it down the correct, pre-defined lane (case).\n");
     printf("It's a clean way to handle multiple choices or scenarios based on a single value, making your decision-making code much tidier.\n");
     printf("Example: switch (day_of_week) { case MONDAY: // code for Monday; break; ... } // Directs traffic based on the day.\n");
@@ -699,12 +761,69 @@ int main()
 
     printf("\n\n");
 
+//----------------------
+
+    printf("--------------------------------------------\n");
+    printf("27. typedef\n");
+    sleep(1);
+    printf("--------------------------------------------\n");
+    printf("'typedef' is like giving your data type a nickname – you're tired of saying the full government name all the time.\n");
+    printf("Imagine calling your friend by their full name every time: 'Jonathan Maxwell Emmanuel John the Third' 😩\n");
+    printf("Instead, you say: 'Hey Max!' That's what typedef does. Cleaner. Simpler. Smarter.\n");
+    printf("You can use it to rename primitive types (like int, float) OR even structs and pointers to make code easier to read.\n");
+    printf("Real Life: Like saving a contact as 'Bae' instead of their full name. Less typing. More vibes.\n");
+    printf("--------------------------------------------\n");
+    sleep(5);
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+    // --- Typedef Basics for Beginners ---
+
+    // 1. Giving a nickname to a simple type
+    typedef int Count; // 'Count' is now another name for 'int'
+
+    Count apples = 5;
+    Count oranges = 3;
+    Count total_fruit = apples + oranges;
+
+    // 2. Nicknaming a float
+    typedef float Price;
+
+    Price soda_price = 1.50f;
+    Price burger_price = 4.75f;
+    Price total_price = soda_price + burger_price;
+
+    // 3. Nicknaming a struct (this is where typedef really shines)
+
+    #include <stdio.h>
+    #include <string.h>
+
+    struct Book {
+        char title[50];
+        int pages;
+    };
+
+    // Instead of writing 'struct Book' every time, now we just say 'Book'
+    typedef struct Book Book;
+
+    int main() {
+        Book b1;
+        strcpy(b1.title, "The C Programming Guide");
+        b1.pages = 420;
+
+        printf("Book: %s, Pages: %d\n", b1.title, b1.pages);
+        return 0;
+    }
+
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
 //=====================================================================================
 
     printf("28. union\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'union' is like a **special, space-saving storage box** that can hold *different kinds of items*, but **only one at a time**.\n");
+    printf("'union' is like a special, space-saving storage box that can hold different kinds of items, but only one at a time.\n");
     printf("Think of a single memory slot that can be used to store either a whole number (an int), or a decimal number (a float), or even a character (a char). But if you put the int in, the float that was there before is gone.\n");
     printf("It's used when you need to save memory and you know that at any given moment, you'll only need *one* of the possible data types stored in that spot.\n");
     printf("Example: union Data { int i; float f; char c; }; // Can hold an int, float, OR char, but not all at once.\n");
@@ -713,29 +832,80 @@ int main()
 
     printf("\n\n");
 
+    /**
+     * union Data 
+     *  { 
+     *      int i; 
+     *      float f; 
+     *      char c; 
+     *  }
+     */
+
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+    #include <stdio.h> // For printf
+    #include <string.h> // For strcpy, if you were to use a char array in a union
+
+    // 1. Defining our 'space-saving box' (the union)
+    // This union 'ValueHolder' can hold an integer, a float, OR a character.
+    // BUT, they all share the SAME memory location.
+    union ValueHolder {
+        int i;    // Can hold an integer
+        float f;  // Can hold a floating-point number
+        char c;   // Can hold a single character
+    };
+
+    void union_function() {
+
+        // 2. Declaring a variable of our union type
+        union ValueHolder my_data;
+
+        printf("--- Demonstrating Union's Single-Memory Slot ---\n");
+
+        // --- Scenario 1: Storing an integer ---
+        my_data.i = 123; // Put an integer value into the 'i' slot
+        printf("1. After assigning my_data.i = %d\n", my_data.i);
+        // What about the other slots? They are now holding the *reinterpretation* of those bytes
+        printf("   my_data.f (reinterpreted): %f\n", my_data.f); // This will be garbage!
+        printf("   my_data.c (reinterpreted): %c\n", my_data.c); // This will be garbage/unprintable!
+        printf("   Size of union: %zu bytes (It's the size of its largest member, typically int/float)\n\n", sizeof(my_data));
+
+
+        // --- Scenario 2: Now, storing a float. This OVERWRITES the integer! ---
+        my_data.f = 98.76f; // Put a float value into the 'f' slot
+        printf("2. After assigning my_data.f = %f\n", my_data.f);
+        // Now, if we try to read 'i', it's garbage because 'f' overwrote its memory.
+        printf("   my_data.i (reinterpreted): %d\n", my_data.i); // Garbage now!
+        printf("   my_data.c (reinterpreted): %c\n", my_data.c); // Garbage now!
+        printf("\n");
+
+
+        // --- Scenario 3: Storing a character. This OVERWRITES the float! ---
+        my_data.c = 'Z'; // Put a character value into the 'c' slot
+        printf("3. After assigning my_data.c = %c\n", my_data.c);
+        // Again, trying to read other members now will yield garbage.
+        printf("   my_data.i (reinterpreted): %d\n", my_data.i); // Garbage!
+        printf("   my_data.f (reinterpreted): %f\n", my_data.f); // Garbage!
+        printf("\n");
+
+        printf("--- Union Demonstration Complete ---\n");
+
+        return 0;
+
+    
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
 //=====================================================================================
 
-    printf("29. unsigned\n");
-    sleep(1);
-    printf("--------------------------------------------\n");
-    printf("'unsigned' is like telling your number, 'Hey, you're a **positive-vibes-only** kind of number!'\n");
-    printf("It means this variable can *only* hold zero or positive whole numbers. The cool part? Since it doesn't need to save space for negative signs, it can store positive numbers that are twice as big as a regular 'signed' integer!\n");
-    printf("Think of it as a number line that starts at zero and only goes to the right. Perfect for counting things that can't be negative, like the number of likes on your post.\n");
-    printf("Example: unsigned int likes = 100000; // Can't have negative likes, right?\n");
-    printf("--------------------------------------------\n");
-    sleep(5);
 
-    printf("\n\n");
-
-
-//=====================================================================================
 
     printf("30. void\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'void' is like the **'nothing' or 'generic'** keyword in C, used in a couple of key ways:\n");
-    printf("1. **For functions (like void do_stuff()):** It means this function just *does* something, but it doesn't **give back** any specific value or result when it's done. It's like telling your friend, 'Go close the door.' They do it, but they don't hand you anything back.\n");
-    printf("2. **For pointers (void *ptr):** It's like a **'mystery box' pointer**. It can point to *any* type of data (an int, a float, a struct, whatever!), but you don't know *what* it's pointing to until you explicitly tell the compiler. Super flexible for generic memory handling!\n");
+    printf("'void' is like the 'nothing' or 'generic' keyword in C, used in a couple of key ways:\n");
+    printf("1. For functions like (void do_stuff()): It means this function just does something, but it doesn't **give back** any specific value or result when it's done. It's like telling your friend, 'Go close the door.' They do it, but they don't hand you anything back.\n");
+    printf("2. For pointers (void *ptr): It's like a 'mystery box' pointer. It can point to *any* type of data (an int, a float, a struct, whatever!), but you don't know *what* it's pointing to until you explicitly tell the compiler. Super flexible for generic memory handling!\n");
     printf("--------------------------------------------\n");
     sleep(5);
 
@@ -760,7 +930,7 @@ int main()
     printf("32. while\n");
     sleep(1);
     printf("--------------------------------------------\n");
-    printf("'while' is like your program's **'keep doing this AS LONG AS...'** command.\n");
+    printf("'while' is like your program's 'keep doing this AS LONG AS...' command.\n");
     printf("Imagine you're eating popcorn **while** the movie is still playing. As long as the movie is on (the condition is true), you keep eating popcorn. The moment the movie ends (the condition becomes false), you stop.\n");
     printf("It's perfect for repeating a block of code an unknown number of times, as long as a certain condition remains true.\n");
     printf("Example: while (has_popcorn) { eat_popcorn(); } // Keep munching until the bag is empty!\n");
@@ -770,7 +940,7 @@ int main()
     printf("\n\n");
 
     printf("--------------------------------------------\n");
-    printf("That's all you need to learn to use in C programming.\n");
+    printf("That's almost everything you need to learn to use in C programming. You'll also meet so many standard library stuff that will amplify your coding abilities in the future.\n");
     printf("--------------------------------------------\n");
 
     printf("\n\n");
