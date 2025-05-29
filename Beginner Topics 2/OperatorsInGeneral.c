@@ -1,85 +1,125 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>  // Gotta have this for printf (to show our vibes) and scanf (if we needed input).
+#include <stdbool.h> // For using 'true' and 'false' instead of 1 and 0, makes logical stuff clearer.
 
-int main()
-{
-    /*
+/*
+ * 🚀 C Operators: The Vibe Check Edition 🚀
+ *
+ * Alright, let's talk about how C understands your commands.
+ * Operators are like the action verbs in C – they tell the program what to do with your data.
+ * But just like in life, there's an order to things!
+ *
+ * We're gonna dive into:
+ * 1. Assignment Operators: Giving values a glow-up.
+ * 2. Precedence: Who gets to go first in the calculation queue?
+ * 3. Associativity: When there's a tie, who breaks it?
+ *
+ * No cap, understanding these makes your code hit different. Let's get it! ✨
+ * 
+ */
 
-    This is assigment operator chaining.
-    In assignment operator, the variable is the operand on the left always.
+int main() {
+    printf("🎮 Welcome to the C Operator Playground! Let's get these vibes right. 🤙\n\n");
 
-    */
+    // --- Section 1: Assignment Operators - The OG Setup Crew ---
+    printf("--- Section 1: Assignment Operators - Setting the Scene ---\n");
+    printf("These are how you give values to your variables. Simple as that.\n\n");
+
+    // Assignment Chaining: Setting everyone's starting score in a game.
+    // It reads from right to left, so 'h' gets 200, then 'g' gets what 'h' got, and so on.
+    // Everyone starts on the same page!
     int x, y, z, f, g, h;
-    x = y = z = f = g = h = 200;
-    printf("x is: %d\n", x);
-    printf("y is: %d\n", y);
-    printf("z is: %d\n", z);
-    printf("f is: %d\n", f);
-    printf("g is: %d\n", g);
-    printf("h is: %d\n", h);
+    printf("Scenario: Everyone starts with 200 points in our game. 💯\n");
+    x = y = z = f = g = h = 200; // This is the chaining magic!
+    printf("x: %d, y: %d, z: %d, f: %d, g: %d, h: %d\n", x, y, z, f, g, h);
+    printf("See? All set to 200. Smooth. 😎\n\n");
 
-    x = x + 65; // can also be x+= 65;
-    y += 64;
-    printf("The new x is: %d\n", x);
-    printf("The new y is: %d\n", y);
-
-    /*
-
-    Here are the operators in C, along with their precedence and associativity:
-
-    Parentheses (): Function call, array subscript. Parentheses have the highest precedence and are evaluated first.
-    Unary operators +, -, !, ~: Unary plus, unary minus, logical NOT, bitwise NOT. Unary operators have the next highest precedence and are evaluated from right to left.
-    Cast operator (datatype): Type cast. Cast operator has the same precedence as unary operators and is evaluated from right to left.
-    Size of operator sizeof(): Size in bytes. Size of operator has the same precedence as unary operators and is evaluated from right to left.
-    Multiplication *, /, %: Multiplication, division, modulus. These operators have the same precedence and are evaluated from left to right.
-    Addition +, -: Addition, subtraction. These operators have the same precedence and are evaluated from left to right.
-    Shift operators <<, >>: Left shift, right shift. These operators have the same precedence and are evaluated from left to right.
-    Relational operators <, <=, >, >=: Less than, less than or equal to, greater than, greater than or equal to. These operators have the same precedence and are evaluated from left to right.
-    Equality operators ==, !=: Equal to, not equal to. These operators have the same precedence and are evaluated from left to right.
-    Bitwise AND &: Bitwise AND.
-    Bitwise XOR \|: Bitwise XOR.
-    Bitwise OR |: Bitwise OR.
-    Logical AND &&: Logical AND.
-    Logical OR \|\|: Logical OR.
-    Conditional operator ?:: Conditional operator.
-    Assignment operators =, *=, /=, %=, +=, -=: Assignment operators. Assignment operators have the lowest precedence and are evaluated from right to left.
-
-    =========================================
-
-    Here are some expressions and how they will be evaluated:
-
-    x = a + b < c:
-    The + operator has higher precedence than the < operator, so a + b will be evaluated first.
-    The result of a + b will then be compared to c.
-    If the result is less than c, then the value of x will be 1. Otherwise, the value of x will be 0.
-
-    x *= a + b:
-    The + operator has higher precedence than the *= operator, so a + b will be evaluated first.
-    The result of a + b will then be multiplied by the current value of x.
-    The new value of x will be assigned to x.
-
-    x = a <= b && b == c:
-    The <= operator has higher precedence than the == operator, so a <= b will be evaluated first.
-    The result of a <= b will then be compared to c.
-    If the result is true, then the value of x will be 1. Otherwise, the value of x will be 0.
-    In the above examples, the operators are evaluated in the following order:
-
-    Operators with the highest precedence
-    Operators with the same precedence, from left to right
-    If two operators with the same precedence are next to each other, the order of evaluation is determined by the associativity of the operators.
-
-    The associativity of an operator tells us whether it is evaluated from left to right or from right to left. The associativity of the following operators is:
-
-    +, -: Left to right
-    *, /, %: Left to right
-    <, <=, >, >=: Left to right
-    ==, !=: Left to right
-    &&: Left to right
-    ||: Left to right
-    ?:: Right to left
+    // Compound Assignment: The Shortcut Flex 💪
+    // Instead of 'x = x + 65;', you can just say 'x += 65;'. It's quicker and cleaner.
+    printf("Scenario: Leveling up! Adding some points to x and y.\n");
+    int old_x = x; // Storing old value to show the change
+    int old_y = y;
+    x += 65; // This is the same as x = x + 65;
+    y += 64; // This is the same as y = y + 64;
+    printf("Old x: %d, New x (x += 65): %d\n", old_x, x);
+    printf("Old y: %d, New y (y += 64): %d\n", old_y, y);
+    printf("Compound assignments are like your favorite keyboard shortcuts – efficient!\n\n");
 
 
-    */
+    // --- Section 2: Operator Precedence - Who Gets to Go First? ---
+    printf("--- Section 2: Operator Precedence - The Hierarchy of Vibes ---\n");
+    printf("Just like in math class, some operations happen before others.\n");
+    printf("Think of it as who has the mic first in a group convo. 🎤\n\n");
 
-    return 0;
+    int a = 10, b = 5, c = 12; // Our sample numbers.
+
+    // Example 1: Arithmetic (+) vs. Relational (<)
+    // The '+' (addition) operator has higher precedence than '<' (less than).
+    // So, 'a + b' happens *before* the comparison with 'c'.
+    printf("Expression: x = a + b < c; (where a=10, b=5, c=12)\n");
+    printf("  Breakdown: \n");
+    printf("    1. 'a + b' evaluates first: %d + %d = %d\n", a, b, a + b); // 15
+    printf("    2. Then, '%d < %d' evaluates: %d < %d is ", a + b, c, a + b, c); // 15 < 12 is false
+    bool result1 = (a + b < c); // Using bool for clarity
+    printf("%s\n", result1 ? "TRUE (1)" : "FALSE (0)");
+    printf("  So, x will be: %d\n", result1);
+    printf("  TLDR: Addition before comparison. Math before logic. 🧠\n\n");
+
+    // Example 2: Arithmetic (+) vs. Compound Assignment (*=)
+    // The '+' (addition) operator has higher precedence than '*=' (multiply and assign).
+    // So, 'a + b' happens *before* the multiplication with 'x'.
+    x = 5; // Resetting x for this example
+    printf("Expression: x *= a + b; (where x=5, a=10, b=5)\n");
+    printf("  Breakdown: \n");
+    printf("    1. 'a + b' evaluates first: %d + %d = %d\n", a, b, a + b); // 15
+    printf("    2. Then, 'x *= %d' evaluates: %d *= %d (which is %d * %d)\n", a + b, x, a + b, x, a + b); // 5 *= 15 (5 * 15)
+    x *= (a + b); // Using parentheses for clarity, though not strictly needed due to precedence
+    printf("  So, the new x will be: %d\n", x);
+    printf("  TLDR: Calculate the right side first, then assign. 📝\n\n");
+
+    // Example 3: Relational (<=, ==) vs. Logical (&&)
+    // Relational operators (`<=`, `==`) have higher precedence than logical AND (`&&`).
+    // So, `a <= b` and `b == c` are evaluated *before* the `&&` combines their results.
+    a = 10, b = 10, c = 10; // New values for clarity
+    printf("Expression: result = a <= b && b == c; (a=10, b=10, c=10)\n");
+    printf("  Breakdown: \n");
+    printf("    1. 'a <= b' evaluates: %d <= %d is %s\n", a, b, (a <= b) ? "TRUE" : "FALSE"); // 10 <= 10 is TRUE
+    printf("    2. 'b == c' evaluates: %d == %d is %s\n", b, c, (b == c) ? "TRUE" : "FALSE"); // 10 == 10 is TRUE
+    printf("    3. Then, 'TRUE && TRUE' evaluates to: %s\n", ((a <= b) && (b == c)) ? "TRUE" : "FALSE");
+    bool result2 = (a <= b && b == c);
+    printf("  So, result will be: %d\n", result2);
+    printf("  TLDR: Comparisons happen before combining logic. Get your facts straight first! 🧐\n\n");
+
+
+    // --- Section 3: Operator Associativity - The Tie-Breaker ---
+    printf("--- Section 3: Operator Associativity - When There's a Tie ---\n");
+    printf("If operators have the SAME precedence (like + and -), associativity decides the order.\n");
+    printf("It's like reading a sentence: left-to-right or right-to-left. 📖\n\n");
+
+    // Left-to-Right Associativity (most common for arithmetic)
+    // Example: 10 - 5 + 2
+    // The '-' and '+' have the same precedence, but they are left-to-right associative.
+    printf("Expression: result = 10 - 5 + 2;\n");
+    int val_lr = 10 - 5 + 2;
+    printf("  Breakdown: \n");
+    printf("    1. '10 - 5' evaluates first (left-to-right): %d\n", 10 - 5); // 5
+    printf("    2. Then, '5 + 2' evaluates: %d\n", (10 - 5) + 2); // 7
+    printf("  So, result is: %d\n", val_lr);
+    printf("  TLDR: Read it like a book, left to right. ➡️\n\n");
+
+    // Right-to-Left Associativity (common for assignments, unary operators)
+    // We already saw this with assignment chaining: x = y = z = 200;
+    // It evaluates from right to left (z=200, then y=z, then x=y).
+    printf("Expression: x = y = z = 300; (Assignment chaining)\n");
+    int val_rtl_x, val_rtl_y, val_rtl_z;
+    val_rtl_x = val_rtl_y = val_rtl_z = 300;
+    printf("  Breakdown: \n");
+    printf("    1. 'z = 300' happens first. z is %d\n", val_rtl_z);
+    printf("    2. Then, 'y = (result of z=300)' happens. y is %d\n", val_rtl_y);
+    printf("    3. Finally, 'x = (result of y=z)' happens. x is %d\n", val_rtl_x);
+    printf("  TLDR: Assignments go from right to left. ⬅️\n\n");
+
+
+    printf("🏁 Mission accomplished! You've officially aced C operators. Go forth and code with confidence! 💻\n");
+
+    return 0; // Program ended successfully, no cap.
 }
