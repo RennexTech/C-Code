@@ -2,6 +2,8 @@
 
 Hey — I'm Nick. I'm 23, and I'm tired of all the boring C tutorials written like we're robots from the '80s.
 
+🔥 "If you want to code or learn new languages faster, read a technical book, and use AI to translate it into real-world examples with Gen Z flavor."🔥
+
 So I flipped the script. I am turning programming into an art, into a movie worth watching. 
 
 Once you start, you can't stop, because the analogies are too good and too funny, my meme-eaters (Yeah I know you eat memes for breakfast) am here to stop that, you'll be eating code, and replace IG and TikTok once you open this GenZ flavor repo. Don't feel bad that I mentioned GenZ, you know, its just a title, nothing big. Not a flex either.
