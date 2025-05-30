@@ -10,7 +10,7 @@
  *
  * @analog Imagine you're building a super cool app, and you keep typing the same
  * long phrase or calculation over and over. `#define` is like setting up a
- * **text shortcut** or a **secret code word** for that phrase or calculation.
+ * text shortcut or a secret code word for that phrase or calculation.
  *
  * The **preprocessor** (the part of C that gets your code ready *before* it's actually
  * compiled) sees these shortcuts and literally swaps them out with the full text.
@@ -28,8 +28,6 @@
  */
 
 // --- Macro Definitions: Our Shortcuts & Secret Codes ---
-
-
 
 
 
