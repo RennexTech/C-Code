@@ -222,39 +222,16 @@ As you explore reverse engineering, assembly code, and malware analysis, these b
 
 But for malware stuff, they get super advanced, you won't just see x = 10; youll see things like _sub935930 
 
-
 ============================================================================
 
-cmp eax, 0x1          ; Compare the value in register eax with 1
-jne    _subroutine1    ; Jump if not equal (jne means "jump if not equal")
+CodeBlocks Vs IDA image gives you a peek into a compiler vs decompiler. 
 
-Here, the jne (Jump if Not Equal) instruction handles the "if-else" logic, which is much harder to follow unless you’re familiar with assembly and how the processor flags work.
+For example, calculating x + y is not shown in the decompiled code, because the compiler calculated it at compile-time and substituted it with the constant value 30.
 
-In more advanced malware, you'll also see a lot of indirect jumps or function pointers, making it harder to track what’s really going on, especially when combined with obfuscation techniques.
+You can also see that the decompiler used puts() instead of printf(). 
 
-============================================================================
+Such optimizations from the decompiler are to represent the logic in a simplified way, which makes former logic harder to understand. 
 
-2. Obfuscated Code: Variables and Functions
-
-In malware, the names of variables and functions are often obfuscated to make static analysis harder. 
-
-You might encounter names like:
-
-
-_sub935930:
-    ; some malicious code here
-
-
-Instead of being named something useful, like handle_malicious_activity, malware authors deliberately use non-descriptive names, or sometimes even randomly generated names.
-
-The function or variable might be something simple in the high-level language, but after being compiled and obfuscated, it becomes something like:
-
-
-mov eax, [_sub935930]
-
-
-In tools like IDA Pro or Ghidra, these obfuscated names are often replaced with meaningful names during analysis, 
-
-but you’ll need to identify patterns or rely on other methods (like string analysis, code behavior, etc.) to understand their purpose.
+The decompiled function returns 0LL (a 64-bit long long integer, __int64), while the original C code returns an int (which is typically a 32-bit integer). 
 
 ============================================================================
