@@ -53,6 +53,8 @@ void clear_input_buffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+
+
 /**
  * @brief Prompts for and reads a double value from the user.
  * @param prompt Message to display to the user.
@@ -72,6 +74,103 @@ double get_double_input(const char* prompt) {
     clear_input_buffer();
     return value;
 }
+
+
+
+
+// LET'S BREAK DOWN THIS FUNCTION AND MAKE IT UNDERSTANDABLE FOR BEGINNERS BEFORE WE MOVE ON TO THE NEXT ONE...
+
+/**
+ * 
+ * @brief Prompts for and reads a double value from the user.
+ * @param prompt Message to display to the user.
+ * @return The valid double value entered by the user.
+ *
+ * @analog This is the bouncer for your decimal numbers. It's chill with numbers
+ * like 3.14 or 99.99. Anything else? "Nah, that's not a my type/double number, try again."
+ * Keeps the vibes right for floating-point calculations.
+ * 
+ */
+double get_double_input(const char* prompt) {
+    // Declaring a 'value' variable to store the number the user enters.
+    // 'double' means it can hold decimal numbers, like 3.14 or -0.5.
+    double value;
+
+    // --- Understanding 'const char* prompt' (The "Prompt" Ticket) ---
+    // Imagine 'prompt' as a special kind of ticket.
+    //
+    // 'char*' means it's a "string pointer."
+    //   - A 'string' in C is just a sequence of characters (like letters, numbers, spaces)
+    //     all lined up, ending with a special invisible 'null or \0' character.
+    //     Think of it like a train of characters, where each train-car holds one letter.
+
+    //   - A 'pointer' is just a variable that holds the *address* (or location)
+    //     of something else. Instead of holding the actual data, it points to where
+    //     the data lives.
+
+    //     So, 'char*' means it points to the first character of that string-train.
+    //     It's like having the address of the train station where your message starts.
+    //
+    // 'const' before 'char*' means "constant."
+    //   - This is super important! It tells C: "Hey, whatever string this 'prompt'
+    //     ticket points to, *DO NOT* change its contents inside this function."
+    //     It's like having a read-only map. You can look at the map, but you can't
+    //     scribble new directions on it. This protects your original message.
+    //
+    // So, 'const char* prompt' means:
+    // "This function receives a ticket ('prompt') that points to the beginning
+    // of a string of characters. This string is meant to be read (like a message
+    // to the user), but its contents should not be altered by this function."
+    // It's the message you want to display, like "Enter your age: " or "What's the price?".
+    printf("%s", prompt); // Use printf to display the 'prompt' message to the user.
+                          // '%s' is the placeholder for a string that 'prompt' points to.
+
+    // --- The 'while' loop: The Bouncer in Action! ---
+    // This loop keeps running as long as the user's input is NOT a valid number.
+    // It's like the bouncer repeatedly saying, "Nah, that's not right, try again."
+    while (scanf("%lf", &value) != 1) { // %lf for double (long float)
+        // 'scanf("%lf", &value)' tries to read a decimal number from the keyboard.
+        //   - '%lf': This is the format specifier for a 'double' type. It tells scanf
+        //            "I'm expecting a decimal number here."
+        //   - '&value': THIS IS CRITICAL FOR BEGINNERS!
+        //     - '&' means "address of".
+
+        //     - Remember 'value' is where we want to *store* the number the user types.
+
+        //     - 'scanf' doesn't want the *current* value of 'value' (which is garbage at first).
+        //       It needs to know *where* in memory to put the number it reads.
+
+        //     - So, '&value' literally says: "Hey scanf, put the number you read
+        //       *into the memory location that belongs to the 'value' variable*."
+
+        //       It's like telling a delivery driver: "Deliver this package to *this specific house address*."
+        //       You give them the address, not the empty box itself.
+        //
+        // 'scanf(...) != 1':
+        //   - 'scanf' returns the number of items it successfully read.
+        //   - If the user types "hello" instead of "3.14", 'scanf' fails to read a number,
+        //     and it will return 0 (or EOF, which is also not 1).
+        //   - So, '!= 1' means "if scanf didn't successfully read exactly one number."
+        //     If it fails, we enter the loop.
+
+        printf("Invalid input! Please enter a number. Fr fr. 🚫\n"); // Yell at the user nicely for bad input.
+        clear_input_buffer(); // Crucial! Clears out any leftover bad characters from the input.
+                              // If the user typed "abc", 'scanf' only reads 'a', leaves 'bc' in the buffer.
+                              // Without this, the loop would run infinitely trying to read 'b', then 'c'.
+    }
+
+    // After the loop, it means 'scanf' successfully read a number!
+    // We still need to clear the buffer one last time. Why?
+    // If a user types "3.14 ENTER", 'scanf' reads '3.14', but the 'ENTER' key
+    // (newline character) is still lurking in the input buffer.
+    // If another input function was called right after this, it might mistakenly
+    // try to read that leftover 'ENTER'. So, we clear it out to be safe.
+    clear_input_buffer();
+
+    // Finally, return the valid number the user entered.
+    return value;
+}
+
 
 /**
  * @brief Prompts for and reads an integer value from the user.

@@ -27,7 +27,7 @@
 
 int main() {
     printf("=============================================================\n");
-    printf("  C Increment & Decrement Operators: Bonus/Penalty Vibe Check! 💰📉     \n");
+    printf("C Increment & Decrement Operators: Bonus/Penalty Vibe Check!💰📉\n");
     printf("=============================================================\n");
     sleep(1);
 

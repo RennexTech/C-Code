@@ -21,6 +21,11 @@
  * We'll see how to make sure your numbers aren't getting cut off, how to
  * control decimal places, and even how to add some extra space for that clean aesthetic.
  * Let's get this glow-up for your data! ✨
+ * 
+ * Instead of reading, code the code yourself and run it online to see its results. 
+ * 
+ * If things are still hard, ask AI, but I think the code is simple enough to not need explanations. 
+ * 
  */
 
 int main()
@@ -38,6 +43,7 @@ int main()
     printf("    Size of 'letter' (char): %zu bytes (super tiny!)\n", sizeof(letter));
     sleep(1);
 
+
     // --- Second Data Type: Integers (int) ---
     printf("\n--- Int: The Whole Number Squad 🔢 ---\n");
     printf("    @analog: Your everyday shoebox. For whole numbers, no decimals allowed.\n");
@@ -47,6 +53,7 @@ int main()
     sum = number1 + number2; // Simple addition
     printf("    The sum of %d and %d is: %d\n", number1, number2, sum);
     sleep(1);
+
 
     // --- Integer Division Fun (or not!) ---
     printf("\n--- Integer Division: The No-Decimal Zone 🚫 ---\n");
@@ -59,6 +66,7 @@ int main()
     printf("    399 / 9 (integer division) gives: %f (Notice it's 44.000000, not 44.333...)\n", division_result);
     sleep(1);
 
+
     // --- Double: The High-Precision Decimal Vibe ---
     printf("\n--- Double: The High-Precision Decimal Vibe 📈 ---\n");
     printf("    @analog: A jeweler's scale. For super precise decimals, like scientific data or money.\n");
@@ -69,11 +77,13 @@ int main()
     printf("    Your major grade after 593 exams is: %lf (Looks like 8.000000, 'cause of integer division first!)\n", majorMarks_pitfall);
     sleep(1);
 
+
     // To fix the above, make at least one operand a double/float:
     double majorMarks_fixed;
     majorMarks_fixed = (double)number2 / 593; // Cast number2 to double FIRST!
     printf("    Fixed major grade (with decimal precision): %lf (Now it's accurate!)\n", majorMarks_fixed);
     sleep(1);
+
 
     // --- Precision Formatting: How Many Decimals? ---
     printf("\n--- Precision Formatting: How Many Decimals You Want? 🎯 ---\n");
@@ -84,11 +94,13 @@ int main()
     printf("    Reduced double precision (%.10lf): %.10lf\n", precision1);
     sleep(1);
 
+
     float precision2 = 235.2323423423423423423423423423423234f; // 'f' suffix for float literal
     // %.7f: Prints a float with exactly 7 digits after the decimal point.
     printf("    Original float: %.15f\n", precision2); // Show original for comparison
     printf("    Reduced float precision (%.7f): %.7f\n", precision2);
     sleep(1);
+
 
     // --- Width Formatting: Minimum Space Occupied ---
     printf("\n--- Width Formatting: Minimum Space Occupied (The Aesthetic!) 🖼️ ---\n");
@@ -101,6 +113,7 @@ int main()
     printf("    Float (%.7f): %7f (No extra spaces, 'cause it's already wide enough)\n", precision3, precision3);
     sleep(1);
 
+
     double pie_val = 3.1453;
     // %10lf: Minimum total width of 10 characters.
     // 3.1453 is 6 characters long. So, it adds 4 spaces before it.
@@ -112,6 +125,7 @@ int main()
     printf("    If you want leading zeros instead of spaces, use '%010lf' (e.g., '00003.145300').\n");
     printf("    Example with leading zeros: '%010.4lf'\n", pie_val); // 0-pad, 10 total width, 4 decimal places
     sleep(1);
+
 
     // --- Boolean Type: True/False Logic ---
     printf("\n--- Boolean Type: True/False Logic (The Vibe Check! ✅❌) ---\n");
@@ -130,12 +144,14 @@ int main()
     printf("    Energy level: %d (In C, any non-zero number is TRUE!)\n", energy_level);
     sleep(1);
 
+
     if (is_awake && !is_tired) { // Using boolean logic
         printf("    You're awake and not tired! Time to code! 💻\n");
     } else {
         printf("    Maybe grab a coffee first. ☕\n");
     }
 
+    
     printf("=============================================================\n");
     printf("That's the lowdown on C data types and getting your output to look just right!\n");
     printf("Keep practicing, fam! You're leveling up! 🚀\n");
