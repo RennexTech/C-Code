@@ -25,7 +25,7 @@ void squareroot();
  *
  * Reads and discards characters from stdin until a newline or EOF.
  * This is crucial after using scanf to prevent leftover characters
- * (like the newline from pressing Enter) from affecting subsequent input calls.
+ * (like the newline: from pressing Enter) from affecting subsequent input calls.
  */
 void clear_input_buffer() {
     int c;
@@ -54,11 +54,7 @@ double get_double_input(const char* prompt) {
 // Let's break this down in depth 
 
 //🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢
-
-#include <stdio.h> // Our trusty toolkit for printf (output) and scanf (input).
-#include <limits.h> // Potentially useful for limits, though not directly used in the clear_input_buffer here, it's good to know.
-
-// Forward declaration for clear_input_buffer.
++
 // It's like telling the compiler, "Hey, there's a function named 'clear_input_buffer' coming later. Don't worry about it for now, just trust me."
 void clear_input_buffer(); 
 

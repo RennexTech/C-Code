@@ -24,7 +24,7 @@ int main() {
     int *ptr = NULL; // For short-circuit evaluation example (it's NULL, so it's a trap!)
 
     printf("=============================================================\n");
-    printf("  C Control Flow: Making Your Code Make Decisions! 🧠      \n");
+    printf("C Control Flow: Making Your Code Make Decisions! 🧠\n");
     printf("=============================================================\n");
     sleep(1);
 
