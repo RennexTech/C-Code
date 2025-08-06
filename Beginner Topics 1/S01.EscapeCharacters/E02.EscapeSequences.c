@@ -66,6 +66,7 @@ int main()
      * `\v` (vertical tab) and `\f` (form feed/new page) are advanced commands for a PHYSICAL printer.
      *
      */
+    
     printf("Demonstrating specific escape sequences:\n");
     printf("1. Tab: Hello\tWorld!\n"); // \t example
     printf("2. Backspace: ABCDEF\b\bGH\n"); // \b example (removes EF, then prints GH)
@@ -75,9 +76,11 @@ int main()
     printf("   Line 1\vLine 2\n"); // \v example
     printf("   Page 1\fPage 2\n"); // \f example
 
+
     // Demonstrating printing a backslash and double quote
     printf("To print a backslash, use \\\\ e.g., C:\\Program Files\\WoMic\n");
     printf("To print a single or double quote, use a backslash infront of it \\\" (e.g., \"Hello, World!\")\n");
+
 
     // Demonstrating character format specifier
     printf("Your initial is: %c\n", initial);

@@ -7,17 +7,22 @@ int main() {
     printf("My age is %d years old.\n", age); // "Okay, first, tell everyone I'm 23. Gotta flex that."
 
     /*
+     *
      * So, imagine your 'main' function is your entire Friday night plan.
      * You've got your list:
      *
      * 1. Finish that TikTok edit that will get a million views and 50 dollars total earnings...😂😉
+     *
      * 2. Order cake...🍰
+     *
      * 3. Start watching that new Netflix series...📺
      *
-     * `return 0;` is like telling your master(computer Operating system), "I'm done with the task." 📄✅  
+     * `return 0;` is like telling your master(computer Operating system), "I'm done with the task." 📄✅
+     *  
      * It means the program finished running successfully — no errors, no drama, just vibes.
      *
      * Once 'return 0;' executes, it's game over, lights out, app closed. Done. Finished.
+     *
      * Any lines of code after it are smoke. 
      */
 
