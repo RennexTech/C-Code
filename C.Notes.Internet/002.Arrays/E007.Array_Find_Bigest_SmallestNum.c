@@ -176,3 +176,5 @@ int main()
 
 // Coding is a creative process. You don't have to do it like your fellow friend did it. 
 
+// I know I lost my fun / memeing-mode when writing this code in chapter 2, but am going to be fixing that in future. For now, I just wanted a functional repo. 
+
