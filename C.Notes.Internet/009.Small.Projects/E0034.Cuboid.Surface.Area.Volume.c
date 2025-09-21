@@ -40,7 +40,7 @@ int main() {
 
 // You don't need stuff, you need focus. 
 
-// Too many books? Read 3 until you finish them
+// Too many books and courses? Read 3 until you finish them
 
 // Too many hobbies? Master 2 before adding more
 
@@ -50,3 +50,21 @@ int main() {
 
 // Buy small stuff till you get disciplined, once you do, upgrade, and you will find that your emotions aren't tied to the gear, but to what you're happy to use it for, your projects, your passions.
 
+
+/*
+
+You don’t need:
+
+The best laptop to code
+
+The fastest GPU to learn
+
+The biggest monitor to focus
+
+You need consistency, focus, and grit.
+
+A basic setup forces you to rely on skill—not specs.
+
+When you upgrade its for efficiency, not emotional satisfaction alone. 
+
+*/
