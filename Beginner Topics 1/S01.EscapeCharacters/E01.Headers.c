@@ -6,6 +6,10 @@
  * RULE 3: You should find out what some things do, by yourself. 
  * RULE 4: You don't cram a topic, you do Questions. 
  * 
+ * SEASONS: Where necessary, I will use seasons and episodes and structure this thing properly. 
+ * 
+ * If you want to make C programming simpler, you structure you stuff well, and avoid complicating your code.
+ * 
  * 
  * ## Your Code's "Blueprint & Tool Store" 🏗️
  *
