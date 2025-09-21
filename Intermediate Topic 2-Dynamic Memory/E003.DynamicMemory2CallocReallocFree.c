@@ -1,4 +1,91 @@
 #include <stdio.h>
+#include <stdlib.h> // This library is for malloc() and free().
+
+int main() {
+    // We declare a pointer `p` that will hold the starting address of our dynamic array.
+    // The integer `n` will store the size of the array the user wants.
+    int *p, n, i;
+
+    /*
+     *
+     * ## The Request: Allocating Memory
+     *
+     * Imagine you're at a storage company. The `malloc()` function is like the person
+     * at the counter. You don't tell them how many "boxes" you need. You tell them
+     * how much *space* you need in total.
+     *
+     * In this case, we tell `malloc` we need enough space to store `n` integers. Since
+     * the size of an integer can be different on different systems (e.g., 4 bytes on
+     * a 32-bit system, 8 bytes on a 64-bit system), we use `sizeof(int)` to make sure
+     * our program is portable. `malloc` then finds a big, empty block of memory on
+     * the **heap** and gives us the address of the very first byte.
+     *
+     * The `(int *)` is a type cast, which tells the compiler, "Hey, I know `malloc`
+     * gives me a generic pointer, but I want you to treat it as a pointer to an
+     * integer." This is super important for how the compiler handles pointer
+     * arithmetic later.
+     *
+     */
+    printf("Enter the number of integers to be entered: ");
+    scanf("%d", &n);
+
+    // Get a big enough "storage unit" for our data.
+    p = (int *)malloc(n * sizeof(int));
+    
+    // Always, always, always check for failure. `malloc` can fail if there's no
+    // more memory available.
+    if (p == NULL) {
+        printf("Error: Memory not available. Exiting.\n");
+        exit(EXIT_FAILURE); // This is a standard way to exit on failure.
+    }
+
+    /*
+     *
+     * ## The Access: Filling the Array
+     *
+     * Now that we have the starting address (`p`) for our storage unit, we can use it
+     * just like a normal array. When you write `p[i]`, the compiler automatically
+     * calculates the correct memory address for you: `p + (i * sizeof(int))`.
+     *
+     * This is the beauty of C. You deal with raw memory but get to use convenient
+     * array notation.
+     *
+     */
+    printf("\nPopulating the array...\n");
+    for (i = 0; i < n; i++) {
+        printf("Enter an integer for index %d: ", i);
+        scanf("%d", &p[i]);
+    }
+
+    printf("\nThe integers in your dynamic array are:\n");
+    for (i = 0; i < n; i++) {
+        // You can use `p[i]` or `*(p + i)`. Both do the exact same thing!
+        printf("Element %d: %d\n", i, p[i]);
+    }
+
+    /*
+     *
+     * ## The Cleanup: Freeing the Memory
+     *
+     * This is the single most important part of dynamic memory allocation. When you're
+     * done with your "storage unit," you have to return the key. If you don't, that
+     * memory is considered "in use" forever, even if your program is done with it.
+     * This is called a **memory leak**, and it's a huge problem in long-running
+     * applications and embedded systems.
+     *
+     * The `free()` function takes the starting address and tells the OS, "Okay, you
+     * can have this memory back now."
+     *
+     */
+    free(p);
+    printf("\nMemory freed. The program is now clean.\n");
+    
+    return 0;
+}
+
+
+
+#include <stdio.h>
 #include <stdlib.h> //if you forget this header, aliens are coming for you!!
 
 /*

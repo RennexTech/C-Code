@@ -204,36 +204,49 @@ Here is a brief explanation of your program:
 */
 
 #include <stdio.h>
-#include <alloc.h>
+#include <stdlib.h> // This header is required for `malloc()` and `free()`.
 
-main() {
-  int *p, n, i;
+int main() {
+    // `p` is a pointer to an integer. It will store the memory address of the first element of our dynamically allocated array.
+    int *p, n, i;
 
-  printf("Enter the number of integers to be entered: ");
-  scanf("%d", &n);
+    printf("Enter the number of integers to be entered: ");
+    scanf("%d", &n);
 
-  // Allocate memory for the array.
-  p = (int *)malloc(n * sizeof(int));
+    // Dynamic memory allocation using `malloc()`.
+    // `malloc(n * sizeof(int))` requests a block of memory large enough to hold `n` integers.
+    // `(int *)` is a cast that converts the generic pointer returned by `malloc` to an integer pointer.
+    p = (int *)malloc(n * sizeof(int));
 
-  // Check if memory allocation was successful.
-  if (p == NULL) {
-    printf("Memory not available\n");
-    exit(1);
-  }
+    // Always check if the memory allocation was successful. `malloc()` returns `NULL` on failure.
+    if (p == NULL) {
+        printf("Error: Memory not available.\n");
+        return 1; // Exit the program with an error code.
+    }
 
-  // Read the integers from the user.
-  for (i = 0; i < n; i++) {
-    printf("Enter an integer: ");
-    scanf("%d", p + i);
-  }
+    // Now we can treat `p` like an array. The loop prompts the user to enter integers and stores them in the allocated memory block.
+    // `p + i` is pointer arithmetic, which calculates the address of the i-th integer.
+    // `scanf` requires a pointer to where the data should be stored.
+    for (i = 0; i < n; i++) {
+        printf("Enter an integer: ");
+        scanf("%d", p + i);
+    }
 
-  // Print the integers.
-  for (i = 0; i < n; i++) {
-    printf("%d\t", *(p + i));
-  }
+    printf("\nThe integers you entered are:\n");
 
-  // Deallocate the memory.
-  free(p);
+    // This loop prints the integers from the dynamically allocated memory.
+    // `*(p + i)` dereferences the pointer, which gives us the value stored at that memory address.
+    for (i = 0; i < n; i++) {
+        printf("%d\t", *(p + i));
+    }
+    printf("\n");
+
+    // Free the memory. This is crucial!
+    // `free(p)` deallocates the memory block pointed to by `p`, returning it to the system.
+    // Failing to do this causes a "memory leak," where the memory remains unavailable for other programs.
+    free(p);
+
+    return 0;
 }
 
 /*

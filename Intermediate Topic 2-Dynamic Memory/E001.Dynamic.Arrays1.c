@@ -4,6 +4,8 @@
 
 /*
 
+Covers all the images. This is the main dynamic arrays file, the other 2 are just additions from those images 2 and 3. 
+
 Dynamic arrays in C using subscript notation. Here is a breakdown of the code:
 
 Program to access dynamically allocated memory as a 1D array.
