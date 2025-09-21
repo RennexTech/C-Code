@@ -8,9 +8,12 @@
  * 
  * SEASONS: Where necessary, I will use seasons and episodes and structure this thing properly. 
  * 
+ * I sprinkle in coding wisdom am 23, yeah I learnt about this stuff, coz am used to staying alone most of the time, I think it will be helpful for you to go through the repo, coz you'll find a lot. 
+ * 
+ * This isn't just a coding tutorial, its Nick's manual to improve your life as you code. 😙
+ * 
  * If you want to make C programming simpler, you structure you stuff well, and avoid complicating your code.
- * 
- * 
+ *  
  * ## Your Code's "Blueprint & Tool Store" 🏗️
  *
  * As an architect, you're about to design a whole new house.

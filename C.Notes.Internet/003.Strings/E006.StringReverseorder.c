@@ -41,6 +41,6 @@ int main()
 
 // Sunglasses save you mental energy spent on looking at people. 
 
-// You can walk while thiking about your code without thinking what they think when looking at you thinking🤣
+// You can walk while thiking about your code, your exes, why you fear swimming, without thinking what they think when looking at you thinking🤣
 
 // This is Nick's manual for human optimization😂
