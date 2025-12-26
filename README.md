@@ -18,7 +18,4 @@ continue: You see a guy in Crocs at the party, you skip him and move to the next
 
 Pointers: It’s not the money; it’s the map to the safe. 📍
 
-Why this matters
-In the "Digital Cage" (2025–2035), understanding the "Machine Logic" is the only way to stay free. If you can’t see the code, you can’t see the cage.
 
-"Master the C, master the silcon."
