@@ -20,7 +20,7 @@ int main()
 
 /*
 
-Certainly! It looks like you're interested in using the sprintf() function in C to convert variables of different data types to strings. I'll provide you with a detailed explanation and an example program for this task.
+It looks like you're interested in using the sprintf() function in C to convert variables of different data types to strings. I'll provide you with a detailed explanation and an example program for this task.
 
 Output:
 

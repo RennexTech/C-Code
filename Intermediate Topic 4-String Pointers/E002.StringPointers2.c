@@ -209,7 +209,7 @@ int main() {
     char *temp; // A temporary "holder" for swapping labels
 
     // 2. SHOW THE MESS: Print the list before we fix it
-    printf("Before sorting:\n");
+    printf("Before sorting:\n"); 
     for (i = 0; i < N; i++) {
         printf("%s\t", arrp[i]);
     }
