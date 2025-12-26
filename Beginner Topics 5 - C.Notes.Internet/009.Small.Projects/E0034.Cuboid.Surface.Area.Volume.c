@@ -1,4 +1,4 @@
-/* Find Surface and volume of cuboid */
+/* Find Surface and volume of cuboid with life advice at the end */
 #include <stdio.h>
 
 int main() {

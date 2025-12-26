@@ -1,158 +1,153 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-/*
-
-This code demonstrates a program where you first enter a string, allocate memory for that string dynamically, and then store it in an array of pointers to strings. Here's a step-by-step explanation of the code:
-
-*/
-#include<stdio.h>
-#include<string.h>
+/**
+ * STORY: 
+ * We have a temporary notebook (temp_buffer) where we scribble down names.
+ * But we want to store these names permanently in a "Filing Cabinet" (arr_pointers).
+ * Since we don't know how long each name is, we use 'malloc' to build a custom-sized
+ * folder for every single name we receive.
+ */
 
 int main() {
-    char *arrp[10], str[20]; // Declare an array of pointers and a character array
+    // 1. The Filing Cabinet: An array that can hold 10 "addresses" (pointers)
+    char *arr_pointers[10]; 
+    
+    // 2. The Temporary Notebook: A place to hold the raw input briefly
+    char temp_buffer[50]; 
 
     int i;
 
+    printf("--- Name Entry System ---\n");
+
     for (i = 0; i < 10; i++) {
-        printf("Enter string %d: ", i + 1);
-        gets(str);
+        printf("Enter name %d: ", i + 1);
 
-        // Allocate memory sufficient to hold the string
-        arrp[i] = (char *)malloc(strlen(str) + 1);
+        // SECURITY FIX: We use fgets instead of gets. 
+        // It tells the program: "Stop reading if the name is longer than the notebook!"
+        fgets(temp_buffer, sizeof(temp_buffer), stdin);
 
-        // Copy the entered string into the dynamically allocated memory
-        strcpy(arrp[i], str);
+        // Clean up: fgets often keeps the "Enter" key (\n) at the end. Let's remove it.
+        temp_buffer[strcspn(temp_buffer, "\n")] = 0;
+
+        // 3. Measure & Build: Calculate length and request exactly that much RAM (+1 for the 'null' end)
+        arr_pointers[i] = (char *)malloc(strlen(temp_buffer) + 1);
+
+        // 4. File it away: Copy the name from the notebook to its new custom home
+        if (arr_pointers[i] != NULL) {
+            strcpy(arr_pointers[i], temp_buffer);
+        }
     }
 
-    // Print the strings stored in the array of pointers
+    // 5. Reviewing the Files: Print everything back out
+    printf("\nDisplaying all stored names:\n");
     for (i = 0; i < 10; i++) {
-        printf("%s\t", arrp[i]);
+        printf("[%d] %s\n", i + 1, arr_pointers[i]);
     }
-    printf("\n");
 
-    // Free the dynamically allocated memory
+    // 6. Shredding the Files: Always clean up your RAM when finished!
     for (i = 0; i < 10; i++) {
-        free(arrp[i]);
+        free(arr_pointers[i]);
     }
 
     return 0;
 }
 
 
-/*
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-Now, let's break down the code and clarify some points:
-
-Declaration of Variables:
-
-char *arrp[10]: This declares an array of 10 pointers to characters, which will store the dynamically allocated strings.
-
-char str[20]: This declares a character array to temporarily store the strings entered by the user.
-
-For Loop for Input and Allocation:
-
-The for loop (from i = 0 to i < 10) allows the user to input 10 strings.
-
-gets(str) is used to read a line of text (string) from the user into the str array.
-
-arrp[i] = (char *)malloc(strlen(str) + 1); dynamically allocates memory to store the string entered by the user.
-
-strlen(str) + 1 is used to allocate enough memory to store the string along with its null terminator.
-
-strcpy(arrp[i], str); copies the entered string from str into the dynamically allocated memory pointed to by arrp[i].
-
-Printing Strings:
-
-After input and allocation, the program prints the strings stored in the array of pointers arrp.
-Freeing Memory:
-
-Finally, the code deallocates the dynamically allocated memory for each string using free(arrp[i]).
-
-This program illustrates the process of dynamically allocating memory for strings and storing them in an array of pointers, which is a common practice when working with variable-length strings. It addresses the limitations of scanf for directly inputting strings into an array of pointers and shows how to use malloc for memory allocation.
-
--------------------------------------------
-
-The provided code is designed to take input for ten strings, dynamically allocate memory for each string, store them in an array of pointers, print the strings, and then free the dynamically allocated memory. However, there's an issue with the use of the gets function, which can lead to unexpected behavior, especially when inputting strings with spaces.
-
-Here's what happens:
-
-The program prompts you to enter ten strings, one by one.
-
-When you input a string, gets(str) is used to read the entire line of input, including spaces, into the str array.
-
-Memory is dynamically allocated for each string using malloc, and the entered string is copied into this allocated memory.
-
-The program then prints the strings stored in the array of pointers.
-
-However, due to the use of gets, if you input strings with spaces or if you exceed the size of the str array (which is 20 characters in this code), you may encounter unexpected behavior, including buffer overflows.
-
-To improve the code and avoid potential issues, you can use a safer input function like fgets to read input. Here's a modified version of your code with fgets:
-
-
-*/
-
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+/**
+ * STORY: 
+ * We have a "Master List" of months stored in a cabinet.
+ * The user gives us a date string. We act like a parser—we slice 
+ * the string to find the month number, then we look up that 
+ * number in our Master List to find the name.
+ */
 
 int main() {
-    char *arrp[10], str[20];
+    // 1. The Master List: A fixed array of pointers to month names.
+    // We add a "Dummy" at index 0 so that Month 1 = January.
+    const char *months[] = {
+        "Invalid", "January", "February", "March", "April", 
+        "May", "June", "July", "August", "September", 
+        "October", "November", "December"
+    };
 
-    int i;
+    char date_input[15];
+    int month_index;
 
-    for (i = 0; i < 10; i++) {
-        printf("Enter string %d: ", i + 1);
-        fgets(str, sizeof(str), stdin);
-        str[strcspn(str, "\n")] = '\0'; // Remove the newline character
+    printf("Enter date (dd/mm/yyyy): ");
+    
+    // 1. THE SECURITY GATE (fgets)
+    // We only have room for 15 characters. 
+    // fgets is like a gate that only lets 15 people in at a time. 
+    // This prevents "Memory Overspill" (Buffer Overflow).
+    if (fgets(date_input, sizeof(date_input), stdin)) {
 
-        arrp[i] = (char *)malloc(strlen(str) + 1);
-        strcpy(arrp[i], str);
+        /* 2. THE STARTING POINT TRICK
+        date_input    = "1 2 / 0 8 / 2 0 2 5"
+        Index (Count) =  0 1 2 3 4 5 6 7 8 9
+        
+        We want the month ("08"). It starts at index 3.
+        By writing '&date_input[3]', we are telling the computer:
+        "Ignore carriages 0, 1, and 2. Start reading from carriage 3 onwards."
+        */
+
+        // 3. THE TRANSLATOR (atoi)
+        // The computer sees "08" as text (like a picture). 
+        // atoi is a translator that turns the text "08" into the actual NUMBER 8.
+        month_index = atoi(&date_input[3]);
+
+        // 4. THE SANITY CHECK
+        // What if the user typed "12/99/2025"? 
+        // A Security Analyst never trusts the user. 
+        // We check if the number is actually a real month (between 1 and 12).
+        if (month_index >= 1 && month_index <= 12) {
+            printf("That date is in: %s\n", months[month_index]);
+        } else {
+            printf("Error: That is not a valid month!\n");
+        }
     }
 
-    for (i = 0; i < 10; i++) {
-        printf("%s\t", arrp[i]);
-    }
-    printf("\n");
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 
-    for (i = 0; i < 10; i++) {
-        free(arrp[i]);
-    }
-
-    return 0;
-}
-
-
-/*
-
-With these changes, fgets is used for input, and the newline character is removed from the input string before allocating memory and copying it. This makes the code safer and more robust when dealing with user input.
-
-*/
-
-/*
-
-The code below is a program that takes a date input in the format "dd/mm/yy" and then prints the corresponding month based on the input date. It does so by using an array of pointers to strings, where each element of the array holds the name of a month.
-
-*/
-
-#include<stdio.h>
+#include <stdio.h>
 
 int main() {
-    int d, m, y;
+    // 1. THE LOOKUP TABLE
+    // We store the names in an array of pointers. 
+    // Think of this as a row of 12 locked boxes, each containing a month name.
     char *months[] = {
         "January", "February", "March", "April",
         "May", "June", "July", "August", "September",
-        "October", "November", "December" };
+        "October", "November", "December" 
+    };
 
+    int d, m, y;
+
+    // 2. THE PATTERN MATCH
+    // We tell scanf to look for a specific pattern: "number / number / number"
+    // The '/' characters in the quotes tell the computer to skip the slashes in the input.
     printf("Enter date (dd/mm/yy): ");
     scanf("%d/%d/%d", &d, &m, &y);
 
-    // Print the month based on the input
+    // 3. THE INDEX CALCULATION
+    // Remember: In C, we start counting at 0. 
+    // If a user types month '1' (January), it is actually at index 0 in our array.
+    // So we use [m - 1] to get the correct box.
+    
+    /* SECURITY WARNING: 
+       If the user enters month 13 or 0, this program will look outside 
+       the array and potentially crash! (Array Out of Bounds) 
+    */
     printf("Month: %s\n", months[m - 1]);
 
     return 0;
 }
-
 
 /*
 
@@ -167,6 +162,10 @@ It then prints the name of the month based on the input. Note that months is a z
 For example, if the user enters "2/5/2002," the program will output "Month: May" because May is the 5th month, and it corresponds to months[4] (zero-based index).
 
 The program provides a simple way to convert a numerical month input into its corresponding name using an array of pointers to strings, making it more readable and user-friendly.
+
+This program acts like a Lookup Table: it takes a month number (1-12) and translates it into a name (January-December). Because C starts counting at zero, we subtract 1 from the user's input (m - 1) to find the correct index in our list. It’s a fast, efficient way to turn raw data into something human-readable.
+
+⚠️ Security Note: This version is fast but assumes the user enters a valid number. In a production environment, I would add an if statement to check that the month is between 1 and 12 to prevent an Array Out of Bounds memory error. 
 
 */
 
@@ -190,30 +189,43 @@ This code allows you to convert a numerical month input into its corresponding n
 */
 
 
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
 /*
 
-The code below is a program that sorts an array of strings represented by an array of pointers using the selection sort technique. While the code may seem a bit dense, let's break it down step by step:
+The code below is a program that sorts an array of strings represented by an array of pointers using the selection sort technique. The code may seem a bit dense, let's break it down step by step:
 
 */
 
 #include <stdio.h>
+#include <string.h> // Needed for strcmp (string comparison)
 
-#define N 5
+#define N 5 // We are dealing with 5 colors
 
 int main() {
+    // 1. THE LIST: An array of pointers (labels) pointing to colors in memory.
     char *arrp[N] = { "white", "red", "green", "yellow", "blue" };
     int i, j;
-    char *temp;
+    char *temp; // A temporary "holder" for swapping labels
 
+    // 2. SHOW THE MESS: Print the list before we fix it
     printf("Before sorting:\n");
     for (i = 0; i < N; i++) {
         printf("%s\t", arrp[i]);
     }
-    printf("\n");
+    printf("\n\n");
 
+    // 3. THE SORTING MACHINE (Selection Sort)
+    // We pick one color (i) and compare it to every color after it (j).
     for (i = 0; i < N; i++) {
         for (j = i + 1; j < N; j++) {
+            
+            // Does "Color A" come after "Color B" in the alphabet?
+            // strcmp returns a number > 0 if the first string is "bigger" (later in alphabet)
             if (strcmp(arrp[i], arrp[j]) > 0) {
+                
+                // SWAP THE LABELS: We don't move the actual words in memory.
+                // We just swap which "label" points to which "word."
                 temp = arrp[i];
                 arrp[i] = arrp[j];
                 arrp[j] = temp;
@@ -221,6 +233,7 @@ int main() {
         }
     }
 
+    // 4. SHOW THE RESULTS: Print the list now that it's alphabetical
     printf("After sorting:\n");
     for (i = 0; i < N; i++) {
         printf("%s\t", arrp[i]);
@@ -229,7 +242,6 @@ int main() {
 
     return 0;
 }
-
 
 /*
 
